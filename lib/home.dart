@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ads.dart';
+import 'ads/ads.dart';
 import 'home_page.dart';
 import 'profile_page.dart';
 import 'selfie_of_week.dart';

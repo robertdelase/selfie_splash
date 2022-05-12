@@ -187,7 +187,7 @@ class PostItem extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             height: 65,
-            width: 365,
+            width: MediaQuery.of(context).size.width * 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
