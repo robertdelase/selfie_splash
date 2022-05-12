@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:selphie_splash/constants.dart';
-import '../components/popContext.dart';
+import '../../../components/popContext.dart';
 
 
 class AdCategory extends StatelessWidget {

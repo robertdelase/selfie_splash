@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'ads/ads.dart';
-import 'home_page.dart';
-import 'profile_page.dart';
-import 'selfie_of_week.dart';
-import 'challenges.dart';
-import 'search.dart';
-import 'profile_menu.dart';
-import 'notifications.dart';
+import 'screens/ads/ads.dart';
+import 'screens/home/home_page.dart';
+import 'screens/profile/profile_page.dart';
+import 'screens/selfie/selfie_of_week.dart';
+import 'screens/challenge/challenges.dart';
+import 'screens/search.dart';
+import 'screens/profile/profile_menu.dart';
+import 'screens/inbox/notifications.dart';
 
 
 class Home extends StatelessWidget {

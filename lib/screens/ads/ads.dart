@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:selphie_splash/constants.dart';
-import 'package:selphie_splash/screens/addChallenge.dart';
+import 'package:selphie_splash/screens/challenge/addChallenge.dart';
 import 'adCategory.dart';
 
 class AdsPage extends StatefulWidget {

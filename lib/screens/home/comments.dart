@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
-import 'profile_page.dart';
+import '../profile/profile_page.dart';
 import 'package:selphie_splash/constants.dart';
-import 'tags.dart';
+import '../tags.dart';
 class CommentsPage extends StatelessWidget {
   const CommentsPage({Key? key}) : super(key: key);
 
@@ -27,6 +27,19 @@ class CommentsPage extends StatelessWidget {
 
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: ContainerCard(
+        child: Row(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Add comment'
+              ),
+            ),
+            // IconButton(onPressed: (){}, icon: Icon(Icons.emoji_emotions)),
+            // IconButton(onPressed: (){}, icon: Icon(Icons.emoji_emotions)),
+          ],
         ),
       ),
     );
@@ -573,19 +586,21 @@ class Pallets extends StatelessWidget {
 Widget ReactionModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.white,
-  content: Container(
-    padding: EdgeInsets.all(20),
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Colors.white
-    ),
-    height:300,
-    child: GridView.count(crossAxisCount: 3,
-      children: [
-       Icon(Icons.favorite, color: Colors.redAccent,),
-       Icon(Icons.favorite, color: Colors.redAccent,),
-       Icon(Icons.favorite, color: Colors.redAccent,)
-      ],
+  content: ContainerCard(
+    child: Container(
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white
+      ),
+      height:400,
+      child: GridView.count(crossAxisCount: 3,
+        children: [
+         Icon(Icons.favorite, color: Colors.redAccent,),
+         Icon(Icons.favorite, color: Colors.redAccent,),
+         Icon(Icons.favorite, color: Colors.redAccent,)
+        ],
+      ),
     ),
   ),
   actionsAlignment: MainAxisAlignment.center,

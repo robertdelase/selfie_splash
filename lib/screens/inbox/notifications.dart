@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:focused_menu/modals.dart';
 import 'package:selphie_splash/constants.dart';
-import 'package:selphie_splash/screens/profile_page.dart';
-import '../components/flexibleCard.dart';
+import 'package:selphie_splash/screens/profile/profile_page.dart';
+import '../../components/flexibleCard.dart';
 import 'package:focused_menu/focused_menu.dart';
 class Notifications extends StatelessWidget {
   const Notifications({Key? key}) : super(key: key);

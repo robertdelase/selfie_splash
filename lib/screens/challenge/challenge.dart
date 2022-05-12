@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:selphie_splash/constants.dart';
-import 'package:selphie_splash/screens/profile_page.dart';
+import 'package:selphie_splash/screens/profile/profile_page.dart';
 
 class Challenge extends StatelessWidget {
    Challenge({Key? key,

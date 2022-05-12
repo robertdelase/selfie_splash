@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:selphie_splash/constants.dart';
-import 'profile_page.dart';
+import '../profile/profile_page.dart';
 import 'comments.dart';
 
 class HomePage extends StatelessWidget {
