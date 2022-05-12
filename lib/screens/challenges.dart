@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:selphie_splash/constants.dart';
+import 'challenge.dart';
+import 'addChallenge.dart';
+import 'globalChallenge.dart';
 
 class ChallengesPage extends StatelessWidget {
   const ChallengesPage({Key? key}) : super(key: key);
@@ -37,14 +40,22 @@ class ChallengesPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ElevatedButton(onPressed: (){}, child: Text('Create New', style: TextStyle(fontSize: 20),),
+                      ElevatedButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return AddChallenge();
+                        }));
+                      }, child: Text('Create New', style: TextStyle(fontSize: 20),),
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
                           padding: EdgeInsets.symmetric(horizontal: 35, vertical: 20)
                         ),
 
                       ),SizedBox(width: 15,),
-                      ElevatedButton(onPressed: (){}, child: Text('View Global', style: TextStyle(fontSize: 20, color: Colors.blue),),
+                      ElevatedButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return GlobalChallenge();
+                        }));
+                      }, child: Text('View Global', style: TextStyle(fontSize: 20, color: Colors.blue),),
                         style: ElevatedButton.styleFrom(
                           primary: Colors.white,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40),),
@@ -88,70 +99,82 @@ class Stories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.all(4),
-        width: 200,
-        height: 300,
-        decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage('assets/welcome.png'), fit: BoxFit.cover),
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                  offset: Offset(2, 4),
-                  blurRadius: 10,
-                  spreadRadius: 2,
-                  color: Colors.grey.withOpacity(0.2)
-              ),
-
-            ]
-        ),
-        child: Stack(
-          children: [
-            Positioned(
-              bottom: 0,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
-                height: 70,
-                width: 200,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Mask Up Challenge', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),),
-                    Text('Take a selfie with your fav mask', style: TextStyle(color: Colors.white, fontSize: 12),),
-                    Row(
-                      children: [
-                        Text('24K', style: TextStyle(color: Colors.white),),
-                        SizedBox(width: 75,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('2h', style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic),),
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.black54,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(0),
-                      topRight: Radius.circular(0), bottomRight:Radius.circular(20), bottomLeft: Radius.circular(20)),
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) =>
+          Challenge(
+            name: 'Name',
+            desc: 'Take a seplhie with our fav mask',
+            tags: '#challengefiesta',
+            image: '',
+          )
+        ));
+      },
+      child: Container(
+          margin: EdgeInsets.all(4),
+          width: 200,
+          height: 300,
+          decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage('assets/welcome.png'), fit: BoxFit.cover),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                    offset: Offset(2, 4),
+                    blurRadius: 10,
+                    spreadRadius: 2,
+                    color: Colors.grey.withOpacity(0.2)
                 ),
 
+              ]
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                bottom: 0,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
+                  height: 70,
+                  width: 200,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Mask Up Challenge', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),),
+                      Text('Take a selfie with your fav mask', style: TextStyle(color: Colors.white, fontSize: 12),),
+                      Row(
+                        children: [
+                          Text('24K', style: TextStyle(color: Colors.white),),
+                          SizedBox(width: 75,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('2h', style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic),),
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(0),
+                        topRight: Radius.circular(0), bottomRight:Radius.circular(20), bottomLeft: Radius.circular(20)),
+                  ),
+
+                ),
               ),
-            ),
-            Positioned(
-              right: 10,
-              top: 10,
-              child: Container(
-                child: Icon(Icons.remove_red_eye, color: Colors.white,)
-              ),
-            )
-          ],
-        )
+              Positioned(
+                right: 10,
+                top: 10,
+                child: Container(
+                  child: Icon(Icons.remove_red_eye, color: Colors.white,)
+                ),
+              )
+            ],
+          )
+      ),
     );
   }
 }

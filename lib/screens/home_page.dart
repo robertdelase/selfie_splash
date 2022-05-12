@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:selphie_splash/constants.dart';
-
+import 'profile_page.dart';
+import 'comments.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,9 +18,15 @@ class HomePage extends StatelessWidget {
         elevation: 0.2,
         title: Text('SelfieSplash', style: kOnboardTextBig.copyWith(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w600),),
         actions: [
-          Image.asset('assets/camera.png', width: 35, height: 35,),
+          GestureDetector(onTap: (){
+            Navigator.pushNamed(context,'selphie_post');
+          },child: Image.asset('assets/camera.png', width: 35, height: 35,)),
           SizedBox(width: 20,),
-          Image.asset('assets/chats.png', width: 35, height: 35,),
+          GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, 'inbox');
+            },
+              child: Image.asset('assets/chats.png', width: 35, height: 35,)),
           SizedBox(width: 20,),
         ],
         toolbarHeight: 70,
@@ -119,9 +126,16 @@ class PostItem extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          CircleAvatar(
-                            radius: 28,
-                            backgroundImage: AssetImage('assets/welcome.png'),),
+                          GestureDetector(
+                            child: CircleAvatar(
+                              radius: 28,
+                              backgroundImage: AssetImage('assets/welcome.png'),),
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context){
+                                return ProfilePage();
+                              }));
+                            },
+                          ),
                           SizedBox(width: 10,),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,7 +197,11 @@ class PostItem extends StatelessWidget {
                   children: [
                     Pallets(icon: Icons.favorite_border, text: '1k',),
                     Pallets(icon: Icons.message_outlined, text: '43',),
-                    Pallets(icon: Icons.account_circle_rounded, text: '26',),
+                    Pallets(icon: Icons.account_circle_rounded, text: '10', tapped: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return CommentsPage();
+                      }));
+                    },),
                     Pallets(icon: Icons.share, text: '4',),
                   ],
                 )
@@ -282,7 +300,7 @@ class SelfieItem extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             height: 65,
-            width: 365,
+            width: MediaQuery.of(context).size.width * 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -290,7 +308,7 @@ class SelfieItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Pallets(icon: Icons.favorite_border, text: '1k',),
+                    Pallets(icon: Icons.favorite_border, text: '2k',),
                     Pallets(icon: Icons.message_outlined, text: '43',),
                     Pallets(icon: Icons.account_circle_rounded, text: '26',),
                     Pallets(icon: Icons.share, text: '4',),
@@ -391,7 +409,7 @@ class MemeItem extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             height: 65,
-            width: 365,
+            width: MediaQuery.of(context).size.width * 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -420,7 +438,6 @@ class MemeItem extends StatelessWidget {
     );
   }
 }
-
 
 class Svlog extends StatelessWidget {
   const Svlog({
@@ -502,7 +519,7 @@ class Svlog extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
                 height: 65,
-                width: 364,
+                width: MediaQuery.of(context).size.width * 1,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -535,21 +552,22 @@ class Svlog extends StatelessWidget {
 }
 
 
-
 class Pallets extends StatelessWidget {
-  const Pallets({
+   Pallets({
     Key? key,
     required this.icon,
-    required this.text
+    required this.text,
+     this.tapped
   }) : super(key: key);
 
   final IconData icon;
   final String text;
+  VoidCallback? tapped;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: tapped,
       child: Row(
         children: [
           Icon(icon, size: 30, color: Colors.grey.shade200,),

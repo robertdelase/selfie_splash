@@ -6,6 +6,7 @@ import 'selfie_of_week.dart';
 import 'challenges.dart';
 import 'search.dart';
 import 'profile_menu.dart';
+import 'notifications.dart';
 
 
 class Home extends StatelessWidget {
@@ -36,7 +37,7 @@ class Home extends StatelessWidget {
               SelfiePage(),
               ChallengesPage(),
               AdsPage(),
-              ProfilePage(),
+              Notifications()//ProfilePage(),
 
             ],
           ),

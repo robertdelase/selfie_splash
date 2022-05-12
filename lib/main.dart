@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:selphie_splash/screens/challenges.dart';
-import 'package:selphie_splash/screens/discover_poeple.dart';
+import 'package:selphie_splash/screens/discover_people.dart';
+import 'package:selphie_splash/screens/profile_menu.dart';
 import 'package:selphie_splash/screens/profile_page.dart';
 import 'screens/on_boarding.dart';
 import 'screens/login.dart';
@@ -15,11 +16,14 @@ import 'screens/login.dart';
 import 'screens/sign_up.dart';
 import 'screens/retrieve_password.dart';
 import 'screens/home_page.dart';
+import 'screens/toolbar_page.dart';
+import 'screens/selfie_post.dart';
 import 'screens/ads.dart';
 import 'screens/selfie_of_week.dart';
 import 'screens/home.dart';
 import 'auth_service.dart';
 import 'screens/inbox.dart';
+import 'screens/discover_people.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +50,11 @@ class MyApp extends StatelessWidget {
             'profile_page': (context) => ProfilePage(),
             'ads_page': (context) => AdsPage(),
             'inbox': (context) => Inbox(),
-            'retrieve': (context) => RetrievePasswordPage()
+            'retrieve': (context) => RetrievePasswordPage(),
+            'selphie_post': (context) => PostPage(),
+            'profile_menu': (context) => ProfileMenu(),
+            'discover': (context) => DiscoverPeople()
+
           },
           home: AuthenticationWrapper()
       )
