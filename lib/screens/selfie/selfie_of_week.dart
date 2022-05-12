@@ -17,7 +17,11 @@ class SelfiePage extends StatelessWidget {
         elevation: 0.2,
         title: Text('Selfie of the Week', style: kOnboardTextBig.copyWith(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w600),),
         actions: [
-          Image.asset('assets/info.png', width: 35,  height: 35,)
+          GestureDetector(
+            onTap: (){
+             showDialog(context: context, builder: ModalWinner);
+            },
+              child: Image.asset('assets/info.png', width: 35,  height: 35,))
         ],
         toolbarHeight: 70,
       ),
@@ -27,10 +31,7 @@ class SelfiePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 0),
               child: Column(
                 children: [
-                  TextButton(onPressed: (){
-                   showDialog(context: context, builder: ModalWinner);
 
-                  }, child: Text('Lauch alert')),
                   SizedBox(height: 20,),
                   Container(
                     margin: EdgeInsets.only(left: 10, right: 10),
@@ -58,7 +59,7 @@ class SelfiePage extends StatelessWidget {
                   ),
                   SizedBox(height: 20,),
                   Container(
-                    height: 250,
+                    height: 260,
                     width: double.infinity,
                     child: ListView(
                       scrollDirection: Axis.horizontal,

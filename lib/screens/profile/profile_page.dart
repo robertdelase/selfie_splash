@@ -16,8 +16,13 @@ class ProfilePage extends StatelessWidget {
               color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w600),
         ),
         actions: [
-          Image.asset(
-            'assets/menu.png', width: 35, height: 35,
+          GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, 'profile_menu');
+            },
+            child: Image.asset(
+              'assets/menu.png', width: 35, height: 35,
+            ),
           ),
         ],
         toolbarHeight: 70,
@@ -196,13 +201,15 @@ class ProfilePage extends StatelessWidget {
                   ContainerCard(
                       child: Container(
                     padding: EdgeInsets.all(1),
-                    height: 500,
+                    height: 600,
                     child: GridView.builder(
                       physics: NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          mainAxisSpacing: 20,
-                          crossAxisSpacing: 10),
+                          mainAxisSpacing: 22,
+                          crossAxisSpacing: 10,
+                        mainAxisExtent: 180
+                      ),
                       itemBuilder: (context, index) {
                         return Container(
                           child: Column(

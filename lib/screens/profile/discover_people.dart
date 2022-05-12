@@ -14,7 +14,7 @@ class DiscoverPeople extends StatelessWidget {
     return  Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back, color: Colors.black,)),
+        leading: IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back, color: Colors.black,)),
         actions: [
           //IconButton(onPressed: (){}, icon: Icon(Icons.search,  size: 28, color: Colors.black.withOpacity(0.7),))
         ],

@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:selphie_splash/constants.dart';
-
+import 'package:selphie_splash/screens/challenge/addChallenge.dart';
+import 'adCategory.dart';
 
 class AdsPage extends StatefulWidget {
   const AdsPage({Key? key}) : super(key: key);
@@ -36,7 +37,11 @@ class _AdsPageState extends State<AdsPage> with SingleTickerProviderStateMixin {
           SizedBox(width: 15,),
           Image.asset('assets/notifications.png', width: 35, height: 35,),
           SizedBox(width: 15,),
-          Image.asset('assets/follow.png', width: 35, height: 35,),
+          GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, 'discover');
+            },
+              child: Image.asset('assets/follow.png', width: 35, height: 35,)),
         ],
         toolbarHeight: 70,
       ),
@@ -80,33 +85,54 @@ class _AdsPageState extends State<AdsPage> with SingleTickerProviderStateMixin {
                       ),
                     ),
                     Tab(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.shopping_bag_sharp),
-                          const SizedBox(width: 8),
-                          Text('Advertisment',  style: kHeader2TextMedium,),
-                        ],
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return AdCategory(title: 'Advertising and Marketing');
+                          }));
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.shopping_bag_sharp),
+                            const SizedBox(width: 8),
+                            Text('Advertisment',  style: kHeader2TextMedium,),
+                          ],
+                        ),
                       ),
                     ),
                     Tab(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.camera_alt, color: Colors.purple,),
-                          const SizedBox(width: 8),
-                          Text('Ads',  style: kHeader2TextMedium,),
-                        ],
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return AdCategory(title: 'Art & Photography');
+                          }));
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.camera_alt, color: Colors.purple,),
+                            const SizedBox(width: 8),
+                            Text('Art & Photography',  style: kHeader2TextMedium,),
+                          ],
+                        ),
                       ),
                     ),
                     Tab(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.shopping_bag_sharp),
-                          const SizedBox(width: 8),
-                          Text('Policies',  style: kHeader2TextMedium,),
-                        ],
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return AdCategory(title: 'Beauty & Cosmetics');
+                          }));
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.shopping_bag_sharp),
+                            const SizedBox(width: 8),
+                            Text('Beauty & Cosmetics',  style: kHeader2TextMedium,),
+                          ],
+                        ),
                       ),
                     ),
                   ],

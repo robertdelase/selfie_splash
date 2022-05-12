@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:selphie_splash/constants.dart';
-import '../components/InputField.dart';
-import '../components/IntroButton.dart';
+import '../../components/InputField.dart';
+import '../../components/IntroButton.dart';
 import 'package:country_picker/country_picker.dart';
 
 class RetrievePasswordPage extends StatefulWidget {

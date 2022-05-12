@@ -1,25 +1,29 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:selphie_splash/screens/challenges.dart';
-import 'package:selphie_splash/screens/discover_poeple.dart';
-import 'package:selphie_splash/screens/profile_page.dart';
-import 'screens/on_boarding.dart';
-import 'screens/login.dart';
-import 'screens/sign_up.dart';
-import 'screens/login.dart';
-import 'screens/retrieve_password.dart';
+import 'package:selphie_splash/screens/challenge/challenges.dart';
+import 'package:selphie_splash/screens/profile/discover_people.dart';
+import 'package:selphie_splash/screens/profile/profile_menu.dart';
+import 'package:selphie_splash/screens/profile/profile_page.dart';
+import 'screens/user_auth/on_boarding.dart';
+import 'screens/user_auth/login.dart';
+import 'screens/user_auth/sign_up.dart';
+import 'screens/user_auth/login.dart';
+import 'screens/user_auth/retrieve_password.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'auth_service.dart';
-import 'screens/login.dart';
-import 'screens/sign_up.dart';
-import 'screens/retrieve_password.dart';
-import 'screens/home_page.dart';
-import 'screens/ads.dart';
-import 'screens/selfie_of_week.dart';
-import 'screens/home.dart';
+import 'screens/user_auth/login.dart';
+import 'screens/user_auth/sign_up.dart';
+import 'screens/user_auth/retrieve_password.dart';
+import 'screens/home/home_page.dart';
+import 'screens/profile/toolbar_page.dart';
+import 'screens/selfie/selfie_post.dart';
+import 'screens/ads/ads.dart';
+import 'screens/selfie/selfie_of_week.dart';
+import 'home.dart';
 import 'auth_service.dart';
-import 'screens/inbox.dart';
+import 'screens/inbox/inbox.dart';
+import 'screens/profile/discover_people.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +50,11 @@ class MyApp extends StatelessWidget {
             'profile_page': (context) => ProfilePage(),
             'ads_page': (context) => AdsPage(),
             'inbox': (context) => Inbox(),
-            'retrieve': (context) => RetrievePasswordPage()
+            'retrieve': (context) => RetrievePasswordPage(),
+            'selphie_post': (context) => PostPage(),
+            'profile_menu': (context) => ProfileMenu(),
+            'discover': (context) => DiscoverPeople()
+
           },
           home: AuthenticationWrapper()
       )
