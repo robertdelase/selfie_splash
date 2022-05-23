@@ -1,0 +1,8 @@
+
+
+class HttpsHandler{
+
+
+  void postImage(){}
+
+}
