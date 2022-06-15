@@ -18,7 +18,7 @@ class Inbox extends StatelessWidget {
         actions: [
           IconButton(onPressed: (){}, icon: Icon(Icons.search, size: 30, color: Colors.black,))
         ],
-        elevation: 0.2,
+        elevation: 0.5,
         titleSpacing: 0,
         title: Text('My Inbox', style: kOnboardTextBig.copyWith(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
         toolbarHeight: 70,
@@ -32,12 +32,18 @@ class Inbox extends StatelessWidget {
               child:Column(
                 children: [
                   SizedBox(height: 15,),
-                  Text('Favorites', style: kOnboardTextSmall.copyWith(color: Colors.grey.shade600,
-                      fontWeight: FontWeight.bold),),
-                  SizedBox(height: 15,),
+                  Row(mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 15,),
+                        Text('Favourites', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                        SizedBox(width: 3,),
+                        Icon(Icons.favorite, color: Colors.red,),
+                      ]
+                  ),
+                  SizedBox(height: 5,),
                   Container(
                       width: double.infinity,
-                      height: size.height * 0.2 * 0.7,
+                      height: size.height * 0.2 * 0.85,
                       child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
@@ -45,19 +51,29 @@ class Inbox extends StatelessWidget {
                             UserProfiles(),
                             UserProfiles(),
                             UserProfiles(),
-
+                            UserProfiles(),
+                            UserProfiles(),
+                            UserProfiles(),
+                            UserProfiles(),
                           ],
                         ),
                     ),
                 ],
               ),
             ),
-
-
+            SizedBox(height: 5,),
+            Row(mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(width: 15,),
+                  Text('Chats', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                ]
+            ),
+            SizedBox(height: 3,),
             //Messages
             Container(
-                  height: MediaQuery.of(context).size.height*1.5,
+              padding: EdgeInsets.only(bottom: 15),
                   child: ListView(
+                    shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     children: [
                       InboxItem(),
@@ -99,7 +115,7 @@ class ContainerCard extends StatelessWidget {
             BoxShadow(
                 offset: Offset(2, 2),
                 blurRadius: 10,
-                spreadRadius: 4,
+                spreadRadius: 3,
                 color: Colors.grey.withOpacity(0.3))
           ]),
     );
@@ -167,17 +183,8 @@ class UserProfiles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 140,
-      decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.blueGrey,
-            width: 1.5
-          ),
-          borderRadius: BorderRadius.all(Radius.circular(15))
-      ),
-      padding: EdgeInsets.all(5),
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      child: Expanded(
+      margin: EdgeInsets.only(right: 4, left: 4, top: 8, bottom: 15),
+      child: ContainerCard(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,

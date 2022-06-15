@@ -1,4 +1,4 @@
-# selfieSplash
+# SelfieSplash
 
 The Documentation For the SelfieSplash Flutter Project.
 

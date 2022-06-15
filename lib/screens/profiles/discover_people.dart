@@ -91,10 +91,11 @@ class DiscoverPeople extends StatelessWidget {
               //Messages
 
                   Container(
-                    height: MediaQuery.of(context).size.height*1.5,
+                    padding: EdgeInsets.only(bottom: 15),
                     margin: EdgeInsets.only(top: 5),
                     child: ListView(
                       physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       children: [
                         DiscoverItem(),
                         DiscoverItem(),
@@ -219,7 +220,7 @@ Widget FollowModal(BuildContext context) =>AlertDialog(
   content: Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(30),
           color: Colors.white
       ),
       height: 320,

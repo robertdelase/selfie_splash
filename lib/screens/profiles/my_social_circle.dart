@@ -5,6 +5,7 @@ import 'package:focused_menu/modals.dart';
 import 'package:selphie_splash/constants.dart';
 import 'package:selphie_splash/screens/profiles/profile_friend.dart';
 import 'package:selphie_splash/screens/profiles/profile_user.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import '../../../components/popContext.dart';
 
 
@@ -34,9 +35,18 @@ class MySocialCircleState extends State<MySocialCircle> {
                 titleSpacing: 0,
                 title: Text('My Social Circle', style: kOnboardTextBig.copyWith(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
                 toolbarHeight: 70,
-                bottom: const  TabBar(
-                  labelColor: Colors.black,
+                bottom: TabBar(
+                  labelColor: Colors.blue,
+                  unselectedLabelColor: Colors.black,
                   labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  indicatorSize: TabBarIndicatorSize.label,
+                  indicator: MaterialIndicator(
+                    height: 4,
+                    color: Colors.blue,
+                    topLeftRadius: 25,
+                    topRightRadius: 25,
+                    tabPosition: TabPosition.bottom,
+                  ),
                   tabs: [
                     Tab(text: '123K followers',),
                     Tab(text: '222 following',),

@@ -149,7 +149,7 @@ Widget FollowModal(BuildContext context) =>AlertDialog(
   content: Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(30),
           color: Colors.white
       ),
       height: 320,
@@ -211,7 +211,7 @@ Widget AcceptModal(BuildContext context) =>AlertDialog(
   content: Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(30),
           color: Colors.white
       ),
       height: 320,
@@ -273,7 +273,7 @@ Widget ChangeStatusModal(BuildContext context) =>AlertDialog(
   content: Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(30),
           color: Colors.white
       ),
       height: 370,

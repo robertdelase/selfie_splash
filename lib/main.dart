@@ -52,21 +52,16 @@ import 'package:selphie_splash/screens/selfie_week_country/selfie_of_the_week_co
 import 'screens/user_auth/on_boarding.dart';
 import 'screens/user_auth/login.dart';
 import 'screens/user_auth/sign_up.dart';
-import 'screens/user_auth/login.dart';
 import 'screens/user_auth/retrieve_password.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'auth_service.dart';
-import 'screens/user_auth/login.dart';
-import 'screens/user_auth/sign_up.dart';
-import 'screens/user_auth/retrieve_password.dart';
 import 'screens/main_activity/home_page.dart';
 import 'screens/add_new/add_new_page.dart';
 import 'screens/add_new/splash_selfie.dart';
 import 'screens/main_activity/ads_page.dart';
 import 'screens/main_activity/selfie_of_the_week_page.dart';
 import 'home.dart';
-import 'auth_service.dart';
 import 'screens/inbox/inbox.dart';
 import 'screens/profiles/discover_people.dart';
 
@@ -189,7 +184,7 @@ class AuthenticationWrapper extends StatelessWidget {
           if (snapshot.hasData) {
             return Home();
           } else {
-            return LoginPage();
+            return OnBoardingScreen();
           }
         },
       ),

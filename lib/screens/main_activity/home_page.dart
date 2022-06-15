@@ -25,6 +25,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.2,
@@ -43,9 +44,10 @@ class HomePage extends StatelessWidget {
         toolbarHeight: 70,
       ),
       body: SafeArea(
+        bottom: false,
         child:SingleChildScrollView(
           child:  Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0),
+            padding: const EdgeInsets.only(bottom: 60),
             child: Column(
               children: [
                 /*TextButton(onPressed: (){

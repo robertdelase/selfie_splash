@@ -32,9 +32,10 @@ class SelfieOfTheWeekPage extends StatelessWidget {
         toolbarHeight: 70,
       ),
       body: SafeArea(
+        bottom: false,
           child:SingleChildScrollView(
             child:  Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 0),
+              padding: const EdgeInsets.only(bottom: 60),
               child: Column(
                 children: [
                   /*TextButton(onPressed: (){
@@ -108,15 +109,15 @@ class SelfieOfTheWeekPage extends StatelessWidget {
     content: Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(30),
         color: Colors.white
       ),
       height:300,
-      child: Column(
+      child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset('assets/award.png', scale: 4,),
-          SizedBox(height: 10,),
-          Text('Get the most admirations on your selfies every week to win', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)
+          Image.asset('assets/award.png', scale: 3.5,),
+          SizedBox(height: 5,),
+          Text('Get the most selfie admiration for the week to win!', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)
         ],
       ),
     ),

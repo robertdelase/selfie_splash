@@ -24,6 +24,7 @@ class WhatsOnPage extends StatelessWidget {
         toolbarHeight: 70,
       ),
       body: SafeArea(
+        bottom: false,
           child:SingleChildScrollView(
             child:  Padding(
               padding: const EdgeInsets.symmetric(horizontal: 1.0),
@@ -69,7 +70,7 @@ class WhatsOnPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20,),
                   Container(
-                    height: MediaQuery.of(context).size.height*1.5,
+                    height: MediaQuery.of(context).size.height*1.4,
                     child: GridView.builder(
                       physics: ScrollPhysics(),
                       scrollDirection: Axis.vertical,

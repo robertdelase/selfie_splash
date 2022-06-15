@@ -6,6 +6,7 @@ import 'package:selphie_splash/screens/profiles/profile_memes.dart';
 import 'package:selphie_splash/screens/profiles/profile_posts.dart';
 import 'package:selphie_splash/screens/profiles/profile_svlogs.dart';
 import 'package:selphie_splash/screens/profiles/profile_tags.dart';
+import '../posted_items/moments.dart';
 import '../profiles/profile_mood.dart';
 import '../profiles/profile_selfies.dart';
 import '../profiles/my_social_circle.dart';
@@ -35,6 +36,7 @@ class ProfilePage extends StatelessWidget {
         toolbarHeight: 70,
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(bottom: 60),
         child: Column(
           children: [
             Stack(
@@ -121,10 +123,12 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        HighLights(
+                  GestureDetector(
+                  onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Moments()));
+                    }, child: HighLights(
                           text: 'Moments',
                           image: 'assets/welcome.png',
-                        ),
+                        ),)
                         /*
                         *HighLights(
                           text: 'Shops(23)',
@@ -487,7 +491,7 @@ Widget ChangeFamilyModal(BuildContext context) =>AlertDialog(
           borderRadius: BorderRadius.circular(20),
           color: Colors.white
       ),
-      height: 630,
+      height: MediaQuery.of(context).size.height * 0.85,
       child:  Column(
           children: [
             //Container colour is dependent on the family colour the user is
@@ -506,10 +510,9 @@ Widget ChangeFamilyModal(BuildContext context) =>AlertDialog(
             Container(
               padding: EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
                 child: Text('Choose your new Family Colour!',
-                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey, fontSize: 18),
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey, fontSize: 16),
                 textAlign: TextAlign.center,),
             ),
-            SizedBox(height: 10,),
             //Clicking on the red button changes the user's coloured profile container to red with opacity 0.7
             //It also changes the colour of the coloured profile buttons to red
             //All hashtags related to the items posted by the user will also be red
@@ -590,6 +593,21 @@ Widget ChangeFamilyModal(BuildContext context) =>AlertDialog(
                   padding: EdgeInsets.all(15),
                   primary: Colors.white,
                   side: BorderSide(color: Colors.purple, width: 2),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+              ),
+            ),
+            SizedBox(height: 20,),
+            //Clicking on the yellow button changes the user's coloured profile container to yellow with opacity 0.7
+            //It also changes the colour of the coloured profile buttons to yellow
+            //All hashtags related to the items posted by the user will also be yellow
+            ElevatedButton(onPressed: (){},
+              child: Text('Family Yellow', style: TextStyle(color: Colors.amber.shade700,fontSize: 18,
+                  fontWeight: FontWeight.bold),),
+              style: ElevatedButton.styleFrom(
+                  elevation: 5,
+                  padding: EdgeInsets.all(15),
+                  primary: Colors.white,
+                  side: BorderSide(color: Colors.amber.shade700, width: 2),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
               ),
             ),

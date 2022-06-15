@@ -6,6 +6,7 @@ import 'package:selphie_splash/screens/profiles/profile_mood.dart';
 import 'package:selphie_splash/screens/profiles/profile_posts.dart';
 import 'package:selphie_splash/screens/profiles/profile_svlogs.dart';
 import 'package:selphie_splash/screens/profiles/profile_tags.dart';
+import '../posted_items/moments.dart';
 import '../profiles/profile_selfies.dart';
 import '../profiles/my_social_circle.dart';
 import 'mutual_social_circle.dart';
@@ -113,10 +114,12 @@ class ProfileFriend extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        HighLights(
+                        GestureDetector(
+                          onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Moments()));
+                          }, child: HighLights(
                           text: 'Moments',
                           image: 'assets/welcome.png',
-                        ),
+                        ),)
                         /*
                         *HighLights(
                           text: 'Shops(23)',
@@ -456,7 +459,7 @@ Widget ChangeStatusModal(BuildContext context) =>AlertDialog(
   content: Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(30),
           color: Colors.white
       ),
       height: 370,

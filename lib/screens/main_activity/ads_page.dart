@@ -55,6 +55,7 @@ class _AdsPageState extends State<AdsPage> with SingleTickerProviderStateMixin {
         toolbarHeight: 70,
       ),
       body: SafeArea(
+        bottom: false,
           child:SingleChildScrollView(
             child:  Padding(
               padding: const EdgeInsets.symmetric(horizontal: 1.0),
