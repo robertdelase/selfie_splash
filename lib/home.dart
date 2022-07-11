@@ -22,7 +22,12 @@ class HomeState extends State<Home> {
 
   int selectedPage = 0;
 
-  final _mainActivityPages = [HomePage(), SelfieOfTheWeekPage(), WhatsOnPage(), AdsPage(), ProfilePage()];
+  final _mainActivityPages = [
+    HomePage(),
+  //SelfieOfTheWeekPage(),
+  // WhatsOnPage(),
+  // AdsPage(),
+    ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +38,9 @@ class HomeState extends State<Home> {
         height: 60.0,
         items: <Widget> [
           Icon(Icons.home, size: 30, color: Colors.white,),
-          Icon(Icons.favorite, size: 30, color: Colors.white,),
-          Icon(Icons.star, size: 30, color: Colors.white,),
-          Icon(Icons.search, size: 30, color: Colors.white,),
+          //Icon(Icons.favorite, size: 30, color: Colors.white,),
+          //Icon(Icons.star, size: 30, color: Colors.white,),
+          //Icon(Icons.search, size: 30, color: Colors.white,),
           Icon(Icons.person, size: 30, color: Colors.white,),
         ],
         buttonBackgroundColor: Colors.blue,
