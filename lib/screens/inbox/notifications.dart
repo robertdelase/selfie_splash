@@ -18,10 +18,11 @@ class Notifications extends StatelessWidget {
         leading: IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back, color: Colors.black,)),
         elevation: 0.2,
         titleSpacing: 0,
+	      //title text
         title: Text('My Notifications', style: kOnboardTextBig.copyWith(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
         toolbarHeight: 70,
       ),
-
+	    //displays notifications list
       body: SingleChildScrollView(
           child: Column(
             children: [
@@ -79,7 +80,7 @@ class Notifications extends StatelessWidget {
     );
   }
 }
-
+//notifications item layout
 class NotificationItem extends StatelessWidget {
   const NotificationItem({
     Key? key,
@@ -95,6 +96,7 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //displays popup menu onclick
     return FocusedMenuHolder(
       menuWidth: MediaQuery.of(context).size.width * 0.6,
       menuOffset: 10,
@@ -124,6 +126,7 @@ class NotificationItem extends StatelessWidget {
                 children: [
                   Expanded(child: Row(
                     children: [
+		                  //displays user's profile pic
                       CircleAvatar(
                         radius: 28,
                         backgroundImage: AssetImage('assets/selfie1.jpeg'),
@@ -132,11 +135,14 @@ class NotificationItem extends StatelessWidget {
                       Expanded(child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+			                    //displays notification text.
+                          // Names of users & pages should be made bold from rest of text
                           Text(text,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
                           ),
                           SizedBox(height: 5,),
+			                    //time of notification
                           Text(time, style: TextStyle(color: Colors.grey),)
                         ],
                       ),
@@ -145,6 +151,7 @@ class NotificationItem extends StatelessWidget {
                   ),
                   ),
                       SizedBox(width: 5,),
+		                  //displays notification type
                       Icon(icon, size: 30, color: iconColor,),
                 ],
               )),

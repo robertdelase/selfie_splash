@@ -25,6 +25,7 @@ class SplashSVlog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+	      //for displaying selected image/video from phone gallery or camera
               Center(
                 child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
@@ -33,14 +34,19 @@ class SplashSVlog extends StatelessWidget {
               SizedBox(height: 20,),
               Container(color: Colors.blue, width: double.infinity,height: 1,),
               SizedBox(height: 25,),
+	      //for inputing caption text for the SVlog item
               InputBoxes(title: 'Add Caption', hint: 'caption', changed: (value){},),
               SizedBox(height: 25,),
-              InputBoxes(title: 'Add SelfieTag (i.e. #happyselfie #smilingselfie)', hint: 'hashtag', changed: (value){},),
+	      //for inputing hashtag(s) for the SVlog item
+              InputBoxes(title: 'Add SVlogTag (i.e. #happysvlog #smilingsvlog)', hint: 'hashtag', changed: (value){},),
               SizedBox(height: 25,),
+	      //for inputing and selecting names of friends/followers to tag for the SVlog item
               InputBoxes(title: 'Tag People', hint: 'people you want to tag', changed: (value){},),
               SizedBox(height: 25,),
+	      //for inputing & selecting location for the SVlog item
               InputBoxes(title: 'Add Location', hint: 'location', changed: (value){},),
               SizedBox(height: 25,),
+	      //for saving and uploading item to Home Page
               ElevatedButton(onPressed: (){}, child: Text('SPLASH', style: TextStyle(fontSize: 20),),
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

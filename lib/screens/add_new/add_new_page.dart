@@ -20,6 +20,7 @@ class AddNew extends StatelessWidget {
       ),
       body: Column(
         children: [
+	  //for adding new moments/stories
           ContainerCardExpanded(child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -27,6 +28,8 @@ class AddNew extends StatelessWidget {
                 Image.asset('assets/splash_moments.png', height: 90, width: 90 ),
             SizedBox(width: 5,),
             Text('Moments', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22),),] ),),
+	  
+	  //for adding new selfies
           ContainerCardExpanded(child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -34,6 +37,8 @@ class AddNew extends StatelessWidget {
                 Image.asset('assets/splash_selfie.png', height: 90, width: 90),
                 SizedBox(width: 10,),
                 Text('Selfie', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22),),] ),),
+
+	  //for adding new posts
           ContainerCardExpanded(child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -41,6 +46,8 @@ class AddNew extends StatelessWidget {
                 Image.asset('assets/splash_post.png', height: 90, width: 90),
                 SizedBox(width: 10,),
                 Text('Post', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22),),] ),),
+
+	  //for adding new memes
           ContainerCardExpanded(child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -48,6 +55,8 @@ class AddNew extends StatelessWidget {
                 Image.asset('assets/splash_meme.png', height: 90, width: 90 ),
                 SizedBox(width: 10,),
                 Text('Meme', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 22),),] ),),
+
+	  //for adding new svlogs
           ContainerCardExpanded(child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,

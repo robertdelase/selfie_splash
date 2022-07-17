@@ -26,6 +26,7 @@ class SplashMoments extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+	      //for displaying selected image/video from phone gallery or camera
               Center(
                 child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
@@ -38,16 +39,20 @@ class SplashMoments extends StatelessWidget {
                   children: [
                     Text('Select Mood Icon:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueGrey),),
                     SizedBox(width: 10),
+		    //for selecting Mood emoji/icon
                     GestureDetector(onTap: (){
                       showDialog(context: context, builder: SelectMoodModal);
                     }, child: Image.asset('assets/m1.png', width: 40, height: 40,),)
                   ]
               ),
               SizedBox(height: 25,),
+	      //for inputing caption text for the Moments item
               InputBoxes(title: 'Add Caption', hint: 'caption', changed: (value){},),
               SizedBox(height: 25,),
+	      //for inputing hashtag(s) for the Moments item
               InputBoxes(title: 'Add MomentsTag (i.e. #happymoments #smilingmoments)', hint: 'hashtag', changed: (value){},),
               SizedBox(height: 25,),
+	      //for saving and uploading item to Home Page
               ElevatedButton(onPressed: (){}, child: Text('SPLASH', style: TextStyle(fontSize: 20),),
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

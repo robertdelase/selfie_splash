@@ -20,6 +20,7 @@ class Inbox extends StatelessWidget {
         ],
         elevation: 0.5,
         titleSpacing: 0,
+	//title text
         title: Text('My Inbox', style: kOnboardTextBig.copyWith(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
         toolbarHeight: 70,
       ),
@@ -32,6 +33,7 @@ class Inbox extends StatelessWidget {
               child:Column(
                 children: [
                   SizedBox(height: 15,),
+		              //favourite text
                   Row(mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(width: 15,),
@@ -41,6 +43,9 @@ class Inbox extends StatelessWidget {
                       ]
                   ),
                   SizedBox(height: 5,),
+		              //favourites list. Only ten items must be displayed
+                  //top ten people user frequently chats with
+		              //onclick opens chat/message window
                   Container(
                       width: double.infinity,
                       height: size.height * 0.2 * 0.85,
@@ -55,6 +60,8 @@ class Inbox extends StatelessWidget {
                             UserProfiles(),
                             UserProfiles(),
                             UserProfiles(),
+			    UserProfiles(),
+                            UserProfiles(),
                           ],
                         ),
                     ),
@@ -65,11 +72,13 @@ class Inbox extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(width: 15,),
+		              //chat title
                   Text('Chats', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
                 ]
             ),
             SizedBox(height: 3,),
-            //Messages
+            //Messages/main inbox of user. Displays chat list
+	          //onclick opens chat/message window
             Container(
               padding: EdgeInsets.only(bottom: 15),
                   child: ListView(
@@ -121,7 +130,7 @@ class ContainerCard extends StatelessWidget {
     );
   }
 }
-
+//inbox/chat list layout
 class InboxItem extends StatelessWidget {
   const InboxItem({
     Key? key,
@@ -136,6 +145,7 @@ class InboxItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(children: [
+	            //displays user's profile pic
               CircleAvatar(
                 radius: 30,
                 backgroundImage: AssetImage('assets/welcome.png'),),
@@ -143,9 +153,11 @@ class InboxItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+		              //displays user's name with corresponding country
                   Text('Alice Stark 🇬🇭', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   overflow: TextOverflow.ellipsis, maxLines: 1,),
                   SizedBox(height: 5,),
+		              //displays first line of message
                   Text('How are you doing?', style: TextStyle(color: Colors.grey),
                     overflow: TextOverflow.ellipsis, maxLines: 1,),
                 ],
@@ -157,11 +169,13 @@ class InboxItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('10 munites ago'),
+		            //displays time sent
+                Text('10 minutes ago'),
                 Row(
                   children: [
                     SizedBox(width: 1, height: 20, child: Container(color:Colors.black26),),
                     SizedBox(width: 10,),
+		                //displays message count per the new message received
                     Text('1 ', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),),
                   ],
                 )
@@ -174,7 +188,7 @@ class InboxItem extends StatelessWidget {
     );
   }
 }
-
+//favourites widget layout
 class UserProfiles extends StatelessWidget {
   const UserProfiles({
     Key? key,
@@ -193,13 +207,16 @@ class UserProfiles extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+		            //displays user's profile pic
                 CircleAvatar(
                   radius: 35,
                   backgroundImage: AssetImage('assets/welcome.png'),),
+		            //displays user's country flag
                 Container(height: 60,child: Text('🇬🇭', style: TextStyle(fontSize: 15))),
               ],
             ),
             SizedBox(height:8,),
+	          //displays user's name
             Text('Ama Obeng', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
               overflow: TextOverflow.ellipsis, maxLines: 1,)
           ],

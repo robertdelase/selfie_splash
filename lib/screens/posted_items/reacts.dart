@@ -3,6 +3,9 @@ import '../main_activity/home_page.dart';
 import '../main_activity/profile_page.dart';
 import 'package:selphie_splash/constants.dart';
 
+import '../profiles/profile_friend.dart';
+import '../profiles/profile_user.dart';
+
 class Reacts extends StatelessWidget {
   const Reacts({Key? key}) : super(key: key);
 
@@ -32,7 +35,7 @@ class Reacts extends StatelessWidget {
     );
   }
 }
-
+//for displaying reacters that a user is not following
 class Pallet extends StatelessWidget {
   const Pallet({
     Key? key,
@@ -46,7 +49,14 @@ class Pallet extends StatelessWidget {
           child:  Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+	      //displays reacter's profile pic, name & country flag. Onclick navigates to reacter's profile
+	      GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return ProfileUser();
+                            }));
+                          },
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(
@@ -55,12 +65,14 @@ class Pallet extends StatelessWidget {
                   SizedBox(width: 5,),
                   Text('Alice stark 🇬🇭', style: TextStyle(fontWeight: FontWeight.bold),)
                 ],
-              ),
+              ),),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+		  //for displaying the react the reacter selected
                   Icon(Icons.favorite, color: Colors.red, size: 28,),
                   SizedBox(width: 3,),
+		  //allows user to follow the reactor onclick
                   ElevatedButton(onPressed: (){showDialog(context: context, builder: FollowModal);},
                     child: Text('Follow'),
                     style: ElevatedButton.styleFrom(
@@ -77,7 +89,7 @@ class Pallet extends StatelessWidget {
     );
   }
 }
-
+//for displaying reacters who are following me, but I'm not following
 class Pallet1 extends StatelessWidget {
   const Pallet1({
     Key? key,
@@ -91,19 +103,28 @@ class Pallet1 extends StatelessWidget {
           child:  Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+	      //for displaying the reacter's profile pic, name and country flag. Onclick navigates user to reacter's profile
+	      GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return ProfileUser();
+                            }));
+                          },
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(radius: 30, backgroundImage: AssetImage('assets/selfie1.jpeg'),),
                   SizedBox(width: 5,),
                   Text('Alice stark 🇬🇭', style: TextStyle(fontWeight: FontWeight.bold),)
                 ],
-              ),
+              ),),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+		  //icon displays react that the reacter used
                   Icon(Icons.favorite, color: Colors.green, size: 28,),
                   SizedBox(width: 5,),
+		  //allows users to accept follow request 
                   ElevatedButton(onPressed: (){showDialog(context: context, builder: AcceptModal);},
                     child: Text('Accept As?'),
                     style: ElevatedButton.styleFrom(
@@ -120,7 +141,7 @@ class Pallet1 extends StatelessWidget {
     );
   }
 }
-
+//displays reacters that the user is following
 class Pallet2 extends StatelessWidget {
   const Pallet2({
     Key? key,
@@ -134,19 +155,28 @@ class Pallet2 extends StatelessWidget {
           child:  Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+	      //displays reacter's profile pic, name & country flag. Onclick takes user to reacter's profile
+	      GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return ProfileFriend();
+                            }));
+                          },
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(radius: 30,backgroundImage: AssetImage('assets/selfie1.jpeg'),),
                   SizedBox(width: 5,),
                   Text('Alice stark 🇬🇭', style: TextStyle(fontWeight: FontWeight.bold),)
                 ],
-              ),
+              ),),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+		  //displays react that the reacter used
                   Icon(Icons.favorite, color: Colors.purple, size: 28,),
                   SizedBox(width: 5,),
+		  //allows users to change following status or unfollow the user completely
                   ElevatedButton(onPressed: (){showDialog(context: context, builder: ChangeStatusModal);},
                     child: Text('Following', style: TextStyle(color: Colors.black),),
                     style: ElevatedButton.styleFrom(
@@ -165,7 +195,7 @@ class Pallet2 extends StatelessWidget {
     );
   }
 }
-
+//allows users to follow another user by selecting from the follow options
 Widget FollowModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,
@@ -227,7 +257,8 @@ Widget FollowModal(BuildContext context) =>AlertDialog(
       )
   ),
 );
-
+//allows users to accept follow request
+//whatever option the receiving user selects is displayed on the status side of both sender's & receiver's profiles
 Widget AcceptModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,
@@ -289,7 +320,8 @@ Widget AcceptModal(BuildContext context) =>AlertDialog(
       )
   ),
 );
-
+//allows users to change follower status or unfollow user entirely
+//whatever option the receiving user selects is displayed on the status side of both sender's & receiver's profiles
 Widget ChangeStatusModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,
@@ -361,3 +393,27 @@ Widget ChangeStatusModal(BuildContext context) =>AlertDialog(
       )
   ),
 );
+
+class ContainerCard extends StatelessWidget {
+  const ContainerCard({Key? key, required this.child}) : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: child,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+                offset: Offset(2, 2),
+                blurRadius: 10,
+                spreadRadius: 3,
+                color: Colors.grey.withOpacity(0.3))
+          ]),
+    );
+  }
+}

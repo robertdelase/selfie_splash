@@ -33,6 +33,7 @@ class MySocialCircleState extends State<MySocialCircle> {
                   color: Colors.black,)),
                 elevation: 0,
                 titleSpacing: 0,
+	            	//title text for every user's personal follower/following list
                 title: Text('My Social Circle', style: kOnboardTextBig.copyWith(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
                 toolbarHeight: 70,
                 bottom: TabBar(
@@ -48,7 +49,9 @@ class MySocialCircleState extends State<MySocialCircle> {
                     tabPosition: TabPosition.bottom,
                   ),
                   tabs: [
+		                //displays user's followers with corresponding count
                     Tab(text: '123K followers',),
+		                //displays user's following with corresponding count
                     Tab(text: '222 following',),
                   ],
                 ),
@@ -58,6 +61,7 @@ class MySocialCircleState extends State<MySocialCircle> {
           body: TabBarView(
               children: [
                 // first tab bar view widget
+		            //displays user's follower's list
                 SingleChildScrollView(
                   child: Column(
                     children: [
@@ -88,6 +92,7 @@ class MySocialCircleState extends State<MySocialCircle> {
                 ),
 
                 // second tab bar view widget
+		            //displays user's following list
                 SingleChildScrollView(
                   child: Column(
                     children: [
@@ -123,7 +128,7 @@ class MySocialCircleState extends State<MySocialCircle> {
     );
   }
 }
-
+//for searching names of profiles in each tab
 class SearchInput extends StatelessWidget {
   SearchInput({
     Key? key,
@@ -203,6 +208,7 @@ class ItemFollower extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+		                //displays user's profile pic. Onclick takes user to that user's profile
                     GestureDetector(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -214,6 +220,7 @@ class ItemFollower extends StatelessWidget {
                         backgroundImage: AssetImage('assets/selfie1.jpeg'),),
                     ),
                     SizedBox(width: 5,),
+		                //displays user's name with corresponding country flag. Onclick navigates to that user's profile
                     Expanded(child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -227,6 +234,7 @@ class ItemFollower extends StatelessWidget {
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                         ),
                         SizedBox(height: 3,),
+			                  //displays one line preview of user's bio
                         Text('Welcome to my humble pa gg gg gg.', overflow: TextOverflow.ellipsis, maxLines: 1,
                           style: TextStyle(color: Colors.grey, fontSize: 13),)
                       ],
@@ -237,6 +245,7 @@ class ItemFollower extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+		                //allows users to accept follow request from the user
                     ElevatedButton(onPressed: (){showDialog(context: context, builder: AcceptModal);},
                       child: Text('Accept As?'),
                       style: ElevatedButton.styleFrom(
@@ -246,6 +255,7 @@ class ItemFollower extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 5,),
+		                //allows user to delete user from list & unfollow as well
                     Icon(Icons.delete_forever_rounded, color: Colors.red, size: 30,)
                   ],
                 )
@@ -324,6 +334,7 @@ class ItemFollower1 extends StatelessWidget {
                     ),),
                   ],),),
                     SizedBox(width: 5,),
+		    //allows user to delete user from list & unfollow as well
                     Icon(Icons.delete_forever_rounded, color: Colors.red, size: 30,)
               ],
             ),
@@ -335,7 +346,7 @@ class ItemFollower1 extends StatelessWidget {
   }
 }
 
-// Friends that I am following
+//friends/users that I am following
 class ItemFollowing extends StatelessWidget {
   const ItemFollowing({
     Key? key,
@@ -404,6 +415,7 @@ class ItemFollowing extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+		                //allows users to change follower status or unfollow the user completely
                     ElevatedButton(onPressed: (){showDialog(context: context, builder: ChangeStatusModal);},
                       child: Text('Following', style: TextStyle(color: Colors.black),),
                       style: ElevatedButton.styleFrom(
@@ -414,6 +426,7 @@ class ItemFollowing extends StatelessWidget {
 
                       ),
                     ),
+		                //onclick opens popup menu
                     FocusedMenuHolder(
                       menuWidth: MediaQuery.of(context).size.width * 0.6,
                       menuOffset: 10,
@@ -422,8 +435,9 @@ class ItemFollowing extends StatelessWidget {
                       menuBoxDecoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(25)),
 
                       menuItems: [
-
+			                  //allows user to manage notifications of activity of that user
                         FocusedMenuItem(title:Text('Manage Notifications', style: TextStyle(fontSize: 14),), onPressed:(){}),
+			                  //allows user to mute a user completely
                         FocusedMenuItem(title: Text('Mute', style: TextStyle(fontSize: 14),), onPressed:(){}),
 
                       ],
@@ -445,7 +459,8 @@ class ItemFollowing extends StatelessWidget {
     );
   }
 }
-
+//allows users to accept follow request
+//whatever option the receiving user selects is displayed on the status side of both sender's & receiver's profiles
 Widget AcceptModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,
@@ -507,7 +522,8 @@ Widget AcceptModal(BuildContext context) =>AlertDialog(
       )
   ),
 );
-
+//allows users to change follower status or unfollow user entirely
+//whatever option the receiving user selects is displayed on the status side of both sender's & receiver's profiles
 Widget ChangeStatusModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,

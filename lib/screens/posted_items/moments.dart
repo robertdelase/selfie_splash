@@ -19,11 +19,13 @@ class Moments extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             decoration: BoxDecoration(
+	      //background image/video of Moment/story item
               image: DecorationImage(image: AssetImage('assets/selfie1.jpeg'), ),
               color: Colors.black,
             ),
             child: Stack(
               children: [
+		//Moments item count represented with dashes
                 Positioned(
                     top: 5,
                     left: 0,
@@ -47,8 +49,10 @@ class Moments extends StatelessWidget {
                         Expanded(
                             child: Row(
                               children: [
+				//displays profile pic of poster
                                 CircleAvatar(radius: 22,backgroundImage: AssetImage('assets/selfie1.jpeg')),
                                 SizedBox(width: 5,),
+				//displays name of poster withtheir corresponding country
                                 Expanded(
                                     child: Column(
                                       crossAxisAlignment:  CrossAxisAlignment.start,
@@ -57,12 +61,14 @@ class Moments extends StatelessWidget {
                                           'Mari Flake🇬🇭', overflow: TextOverflow.ellipsis, maxLines: 1,
                                           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, ),
                                         ),
+					//time posted
                                         Text('20m', style: TextStyle(fontSize: 12, color: Colors.white),)
                                       ],
                                     ))
 
                               ],
                             ),),
+			    //emoji react selected by poster
                             Image.asset('assets/m10.png', width: 40, height: 40,),
                       ],
                     ),
@@ -86,9 +92,11 @@ class Moments extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+			  //caption for Moments
                           Text('Strive for happiness every day!!!', overflow: TextOverflow.ellipsis, maxLines: 2,
                             style: TextStyle(fontSize: 15,color: Colors.white,),),
                           SizedBox(height: 5,),
+			  //hashtags for Moments
                           Text('#happiness #unbothered', overflow: TextOverflow.ellipsis, maxLines: 1,
                             style: TextStyle(fontSize: 15, color: Colors.blue, fontStyle: FontStyle.italic,
                                 fontWeight: FontWeight.bold,),),
@@ -97,6 +105,7 @@ class Moments extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+			      //Moments indicator
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
@@ -107,8 +116,10 @@ class Moments extends StatelessWidget {
                               ),
                               Row(
                                 children: [
+				  //allows users to comment on Moments item
                                   Icon(Icons.comment, color: Colors.white, size: 30,),
                                   SizedBox(width: 20,),
+				  //displays popup menu onclick
                                   FocusedMenuHolder(
                                     menuWidth: MediaQuery.of(context).size.width * 0.6,
                                     menuOffset: 10,
@@ -146,7 +157,7 @@ class Moments extends StatelessWidget {
     );
   }
 }
-
+//dots/dashes to indicaate Moments item count
 class DotWidget extends StatelessWidget {
   final double totalWidth, dashWidth, emptyWidth, dashHeight;
 

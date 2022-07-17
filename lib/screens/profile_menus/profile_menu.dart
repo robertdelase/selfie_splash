@@ -33,13 +33,21 @@ class ProfileMenu extends StatelessWidget {
                 crossAxisSpacing: 10,
                 childAspectRatio: 1.3,
                 children: [
+                  //navigates user to the Account menu
                   ProfileMenuItem(icon: Icons.account_circle, text: 'Account', color: Colors.blue, tapped: (){Navigator.pushNamed(context, 'profile_account');}),
+                  //navigates user to the Notifications menu
                   ProfileMenuItem(icon: Icons.notifications, text: 'Notifications', color: Colors.blue, tapped: (){Navigator.pushNamed(context, 'profile_notifications');}),
+                  //navigates user to the Security menu
                   ProfileMenuItem(icon: Icons.security, text: 'Security', color: Colors.blue,tapped: (){Navigator.pushNamed(context, 'profile_security');}),
+                  //navigates user to the Privacy menu
                   ProfileMenuItem(icon: Icons.lock, text: 'Privacy', color: Colors.blue,tapped: (){Navigator.pushNamed(context, 'profile_privacy');}),
+                  //navigates user to the Ads menu
                   ProfileMenuItem(icon: Icons.campaign, text: 'Ads', color: Colors.blue, tapped: (){Navigator.pushNamed(context, 'profile_ads');}),
+                  //navigates user to the About menu
                   ProfileMenuItem(icon: Icons.info, text: 'About', color: Colors.blue,tapped: (){Navigator.pushNamed(context, 'profile_about');}),
+                  //navigates user to the Support menu
                   ProfileMenuItem(icon: Icons.support_agent, text: 'Support', color: Colors.blue,tapped: (){Navigator.pushNamed(context, 'profile_support');}),
+                  //opens the Log Out dialog onclick for users to either remain or exit the platform
                   ProfileMenuItem(icon: Icons.logout, text: 'Logout', color: Colors.blue, tapped: (){
                     showDialog(context: context, builder: createDialog);
                   },),
@@ -115,6 +123,7 @@ Widget createDialog(BuildContext context) => AlertDialog(
   actionsAlignment: MainAxisAlignment.center,
 );
 
+//profile menu item widget layout
 class ProfileMenuItem extends StatelessWidget {
    ProfileMenuItem({
     Key? key,

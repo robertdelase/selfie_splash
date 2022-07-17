@@ -31,10 +31,12 @@ class HomePage extends StatelessWidget {
         elevation: 0.2,
         title: Text('SelfieSplash', style: kOnboardTextBig.copyWith(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w600),),
         actions: [
+	        //for opening the "Splash A New?" page to select content to upload
           GestureDetector(onTap: (){
             Navigator.pushNamed(context,'add_new');
           },child: Image.asset('assets/camera.png', width: 35, height: 35,)),
           SizedBox(width: 20,),
+	        //for opening one's inbox
           GestureDetector(
               onTap: (){
                 Navigator.pushNamed(context, 'inbox');
@@ -54,6 +56,7 @@ class HomePage extends StatelessWidget {
                   FirebaseAuth.instance.signOut();
                 }, child: Text('Log Out')),*/
                 SizedBox(height: 20,),
+		            //for displaying Moments (stories) on the Home Page
                 Container(
                   margin: EdgeInsets.only(left: 3),
                   height: 200,
@@ -69,6 +72,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20,),
+                //for displaying the weekly motivation quotes which is updated on a weekly basis
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10),
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -107,6 +111,7 @@ class HomePage extends StatelessWidget {
                       ]
                   ),
                 ),
+		            //for displaying uploaded contents i.e. Selfies, Posts, Memes, SVlogs & Moods
                 SizedBox(height: 20,),
                 SelfieItem(),
                 SizedBox(height: 20,),
@@ -127,7 +132,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-//Selfie Item layout
+//Selfie item layout
 class SelfieItem extends StatelessWidget {
   const SelfieItem({
     Key? key,
@@ -151,6 +156,7 @@ class SelfieItem extends StatelessWidget {
                       children: [
                         Row(
                           children: [
+			                      //for displaying user's profile picture. Onclick navigates to that user's profile
                             GestureDetector(
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -166,6 +172,7 @@ class SelfieItem extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+			                          //for displaying user's name with country flag. Onclick navigates to that user's profile
                                 GestureDetector(
                                     onTap: (){
                                       Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -180,9 +187,11 @@ class SelfieItem extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
+                                    //selfie indicator
                                     Text('Selfie ', style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,
                                         fontSize: 13, fontWeight: FontWeight.w500),),
                                     Image.asset('assets/indicator_selfie.png', width: 20, height: 20),
+				                            //time posted
                                     Text(' . 20m', style: TextStyle(fontSize: 13),),
 
                                   ],
@@ -191,6 +200,7 @@ class SelfieItem extends StatelessWidget {
                             ),
                           ],
                         ),
+			                  //for displaying pop up menu onclick
                         FocusedMenuHolder(
                           menuWidth: MediaQuery.of(context).size.width * 0.6,
                           menuOffset: 10,
@@ -199,7 +209,7 @@ class SelfieItem extends StatelessWidget {
                           menuBoxDecoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(25)),
 
                           menuItems: [
-
+			                    //allows users to view comment page of Selfie item
                             FocusedMenuItem(title:Text('View', style: TextStyle(fontSize: 14),), onPressed:(){
                               Navigator.push(context, MaterialPageRoute(builder: (context){
                                 return CommentsSelfie();
@@ -224,6 +234,7 @@ class SelfieItem extends StatelessWidget {
                       child: (
                           Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+				                      //for displaying location of user
                                 Row(crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Icon(Icons.location_on, size: 18, color: Colors.blueGrey,),
@@ -232,16 +243,18 @@ class SelfieItem extends StatelessWidget {
                                   ],
                                 ),
                                 SizedBox(height: 10,),
+				                        //for displaying caption on uploaded content
                                 Text("Where users tap to switch between tab/fragment pages of the Activity.", style: kOnboardTextSmallPost.copyWith(color: Colors.black,
                                     fontSize: 16),overflow: TextOverflow.ellipsis, maxLines: 3),
                                 SizedBox(height: 10,),
+                                //for displaying hashtags on uploaded content
                                 Text('#selfietags #selfietags #selfietags', style: TextStyle(fontWeight: FontWeight.bold,
                                     fontStyle: FontStyle.italic, fontSize: 16, color: Colors.blue),
                                     overflow: TextOverflow.ellipsis, maxLines: 2),
                               ]))),
 
                   SizedBox(height: 10,),
-                  //Image
+                  //Image of Selfie content uploaded
                   ClipRRect(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(0),
@@ -279,17 +292,21 @@ class SelfieItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+		                //for liking/unliking content, with corresponding count
                     Pallets(icon: Icons.favorite_border, text: '333K',),
+		                //navigates user to content's comment, with corresponding count
                     Pallets(icon: Icons.comment, text: '333K', tapped: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return CommentsSelfie();
                       }));
                     },),
+		                //navigates user to content's tag list, with corresponding count
                     Pallets(icon: Icons.account_circle_rounded, text: '26', tapped: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return Tags();
                       }));
                     },),
+		                //for sharing content, with corresponding count
                     Pallets(icon: Icons.share, text: '4',),
                   ],
                 )
@@ -334,6 +351,7 @@ class PostItem extends StatelessWidget {
                       children: [
                         Row(
                           children: [
+			                      //for displaying user's profile picture. Onclick navigates to that user's profile
                             GestureDetector(
                               child: CircleAvatar(
                                 radius: 28,
@@ -349,6 +367,7 @@ class PostItem extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+				                        //for displaying user's name with country flag. Onclick navigates to that user's profile
                                 GestureDetector(
                                   onTap: (){
                                     Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -363,9 +382,11 @@ class PostItem extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
+				                            //post indicator
                                     Text('Post ', style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,
                                         fontSize: 13, fontWeight: FontWeight.w500),),
                                     Image.asset('assets/indicator_post.png', width: 18, height: 18),
+				                            //time posted
                                     Text(' . 20m', style: TextStyle(fontSize: 13),),
                                   ],
                                 ),
@@ -373,6 +394,7 @@ class PostItem extends StatelessWidget {
                             ),
                           ],
                         ),
+			                  //for displaying pop up menu onclick
                         FocusedMenuHolder(
                           menuWidth: MediaQuery.of(context).size.width * 0.6,
                           menuOffset: 10,
@@ -381,7 +403,7 @@ class PostItem extends StatelessWidget {
                           menuBoxDecoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(25)),
 
                           menuItems: [
-
+			                      //allows users to view comment page of Post item
                             FocusedMenuItem(title:Text('View', style: TextStyle(fontSize: 14),), onPressed:(){
                               Navigator.push(context, MaterialPageRoute(builder: (context){
                                 return CommentsPost();
@@ -409,6 +431,7 @@ class PostItem extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+			                  //for displaying location of user
                         Row(crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(Icons.location_on, size: 18, color: Colors.blueGrey,),
@@ -417,16 +440,19 @@ class PostItem extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 10,),
+			                  //for displaying caption on uploaded content
                         Text("Where users tap to switch between tab/fragment pages of the Activity.", style: kOnboardTextSmallPost.copyWith(color: Colors.black,
                             fontSize: 16),overflow: TextOverflow.ellipsis, maxLines: 3),
                         SizedBox(height: 10,),
+			                  //for displaying hashtags on uploaded content
                         Text('#posttags #posttags #posttags', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic, fontSize: 16),overflow: TextOverflow.ellipsis, maxLines: 2),
                       ],
                     )
                   ),),
                   SizedBox(height: 10,),
-                  //Image
+                  //Image/video content
+                  //Multiple content should be displayed with swiping feature & indicator dots
                   ClipRRect(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(0),
@@ -464,17 +490,21 @@ class PostItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+		                //for liking/unliking content, with corresponding count
                     Pallets(icon: Icons.favorite_border, text: '333K',),
+		                //navigates user to content's comment, with corresponding count
                     Pallets(icon: Icons.comment, text: '333K', tapped: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return CommentsPost();
                       }));
                     },),
+		                //navigates user to content's tag list, with corresponding count
                     Pallets(icon: Icons.account_circle_rounded, text: '26', tapped: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return Tags();
                       }));
                     },),
+		                //for sharing content, with corresponding count
                     Pallets(icon: Icons.share, text: '4',),
                   ],
                 )
@@ -518,6 +548,7 @@ class MemeItem extends StatelessWidget {
                     children: [
                       Row(
                         children: [
+			                  //for displaying user's profile picture. Onclick navigates to that user's profile
                           GestureDetector(
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -533,6 +564,7 @@ class MemeItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+			                        //for displaying user's name with country flag. Onclick navigates to that user's profile
                               GestureDetector(
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -547,9 +579,11 @@ class MemeItem extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+				                          //meme indicator
                                   Text('Meme ', style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,
                                       fontSize: 13, fontWeight: FontWeight.w500),),
                                   Image.asset('assets/indicator_meme.png', width: 20, height: 20),
+				                          //time posted
                                   Text(' . 20m', style: TextStyle(fontSize: 13),),
                                 ],
                               ),
@@ -557,6 +591,7 @@ class MemeItem extends StatelessWidget {
                           ),
                         ],
                       ),
+		                  //for displaying pop up menu onclick
                       FocusedMenuHolder(
                         menuWidth: MediaQuery.of(context).size.width * 0.6,
                         menuOffset: 10,
@@ -565,7 +600,7 @@ class MemeItem extends StatelessWidget {
                         menuBoxDecoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(25)),
 
                         menuItems: [
-
+			                    //allows user to view comment page of Meme item
                           FocusedMenuItem(title:Text('View', style: TextStyle(fontSize: 14),), onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context){
                               return CommentsMeme();
@@ -590,6 +625,7 @@ class MemeItem extends StatelessWidget {
                       child: (
                           Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+				                        //for displaying location of user
                                 Row(crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Icon(Icons.location_on, size: 18, color: Colors.blueGrey,),
@@ -598,15 +634,18 @@ class MemeItem extends StatelessWidget {
                                   ],
                                 ),
                                 SizedBox(height: 10,),
+				                        //for displaying caption on uploaded content
                                 Text("Where users tap to switch between tab/fragment pages of the Activity.", style: kOnboardTextSmallPost.copyWith(color: Colors.black,
                                     fontSize: 16),overflow: TextOverflow.ellipsis, maxLines: 3),
                                 SizedBox(height: 10,),
+				                        //for displaying hashtags on uploaded content
                                 Text('#memetags #memetags #memetags', style: TextStyle(fontWeight: FontWeight.bold,
                                     color: Colors.pink, fontStyle: FontStyle.italic, fontSize: 16),
                                     overflow: TextOverflow.ellipsis, maxLines: 2),
                               ]))),
                   SizedBox(height: 10,),
-                  //Image
+                  //Image/Video of uploaded content.
+                  //Multiple content should be displayed with swiping feature & indicator dots
                   ClipRRect(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(0),
@@ -644,17 +683,21 @@ class MemeItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+		                //for liking/unliking content, with corresponding count
                     Pallets(icon: Icons.favorite_border, text: '333K',),
+		                //navigates user to content's comment, with corresponding count
                     Pallets(icon: Icons.comment, text: '333K', tapped: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return CommentsMeme();
                       }));
                     },),
+		                //navigates user to content's tag list, with corresponding count
                     Pallets(icon: Icons.account_circle_rounded, text: '26', tapped: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return Tags();
                       }));
                     },),
+		                //for sharing content, with corresponding count
                     Pallets(icon: Icons.share, text: '4',),
                   ],
                 )
@@ -698,6 +741,7 @@ class SVlogItem extends StatelessWidget {
                     children: [
                       Row(
                         children: [
+			                    //for displaying user's profile picture. Onclick navigates to that user's profile
                           GestureDetector(
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -713,6 +757,7 @@ class SVlogItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+			                        //for displaying user's name with country flag. Onclick navigates to that user's profile
                               GestureDetector(
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -727,9 +772,11 @@ class SVlogItem extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+				                          //svlog indicator
                                   Text('SVlog ', style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,
                                       fontSize: 13, fontWeight: FontWeight.w500),),
                                   Image.asset('assets/indicator_svlog.png', width: 20, height: 20),
+				                          //time posted
                                   Text(' . 20m', style: TextStyle(fontSize: 13),),
                                 ],
                               ),
@@ -737,6 +784,7 @@ class SVlogItem extends StatelessWidget {
                           ),
                         ],
                       ),
+		                  //for displaying pop up menu onclick
                       FocusedMenuHolder(
                         menuWidth: MediaQuery.of(context).size.width * 0.6,
                         menuOffset: 10,
@@ -745,7 +793,7 @@ class SVlogItem extends StatelessWidget {
                         menuBoxDecoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(25)),
 
                         menuItems: [
-
+			                    //allows user to view comment page of SVlog item
                           FocusedMenuItem(title:Text('View', style: TextStyle(fontSize: 14),), onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context){
                               return CommentsSVlog();
@@ -770,6 +818,7 @@ class SVlogItem extends StatelessWidget {
                       child: (
                           Column(crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+				                        //for displaying location of user
                                 Row(crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Icon(Icons.location_on, size: 18, color: Colors.blueGrey,),
@@ -778,17 +827,19 @@ class SVlogItem extends StatelessWidget {
                                   ],
                                 ),
                                 SizedBox(height: 10,),
+				                        //for displaying caption on uploaded content
                                 Text("Where users tap to switch between tab/fragment pages of the Activity.",
                                     style: kOnboardTextSmallPost.copyWith(color: Colors.black,
                                     fontSize: 16),overflow: TextOverflow.ellipsis, maxLines: 3),
                                 SizedBox(height: 10,),
+				                        //for displaying hashtags on uploaded content
                                 Text('#svlogtags #svlogtags #svlogtags', style: TextStyle(color: Colors.green,
                                     fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 16),
                                     overflow: TextOverflow.ellipsis, maxLines: 2),
                               ]))),
 
                   SizedBox(height: 10,),
-                  //Image
+                  //for displaying video of uploaded content with play button
                   Container(
                     height: MediaQuery.of(context).size.height*0.5,
                     width: double.infinity,
@@ -808,6 +859,7 @@ class SVlogItem extends StatelessWidget {
                               topRight: Radius.circular(0), bottomRight:Radius.circular(30), bottomLeft: Radius.circular(30)),
                           child: Image.asset('assets/selfie1.jpeg', fit: BoxFit.cover, ),
                         ),*/
+			                  //play button for video
                         Positioned(
                             child: Image.asset('assets/splash_svlog.png', scale: 1.4)
                         ),
@@ -846,17 +898,21 @@ class SVlogItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+		                //views on content, with corresponding count
                     Pallets(icon: Icons.remove_red_eye, text: '333K',),
+		                //navigates user to content's comment, with corresponding count
                     Pallets(icon: Icons.comment, text: '333K', tapped: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return CommentsSVlog();
                       }));
                     },),
+		                //navigates user to content's tag list, with corresponding count
                     Pallets(icon: Icons.account_circle_rounded, text: '26', tapped: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return Tags();
                       }));
                     },),
+		                //for sharing content, with corresponding count
                     Pallets(icon: Icons.share, text: '4',),
                   ],
                 )
@@ -900,6 +956,7 @@ class MoodItem extends StatelessWidget {
                     children: [
                       Row(
                         children: [
+			                    //for displaying user's profile picture. Onclick navigates to that user's profile
                           GestureDetector(
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -915,6 +972,7 @@ class MoodItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+			                        //for displaying user's name with country flag. Onclick navigates to that user's profile
                               GestureDetector(
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -929,9 +987,11 @@ class MoodItem extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+				                        //mood indicator
                                   Text('Mood ', style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,
                                       fontSize: 13, fontWeight: FontWeight.w500),),
                                   Image.asset('assets/indicator_mood.png', width: 20, height: 20),
+				                          //time posted
                                   Text(' . 20m', style: TextStyle(fontSize: 13),),
                                 ],
                               ),
@@ -939,6 +999,7 @@ class MoodItem extends StatelessWidget {
                           ),
                         ],
                       ),
+                      //for displaying pop up menu onclick
                       FocusedMenuHolder(
                         menuWidth: MediaQuery.of(context).size.width * 0.6,
                         menuOffset: 10,
@@ -947,7 +1008,7 @@ class MoodItem extends StatelessWidget {
                         menuBoxDecoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(25)),
 
                         menuItems: [
-
+			                  //allows user to view comment page of Mood item
                           FocusedMenuItem(title:Text('View', style: TextStyle(fontSize: 14),), onPressed:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context){
                               return CommentsMood();
@@ -968,11 +1029,14 @@ class MoodItem extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10,),
+		              //for displaying mood emoji
                   Image.asset('assets/m32.png', width: 40, height: 40),
                   SizedBox(height: 10,),
+		              //for displaying mood caption
                   Text("Always be Happy!", style: kOnboardTextSmallPost.copyWith(color: Colors.black,
                       fontSize: 16),overflow: TextOverflow.ellipsis, maxLines: 3),
                   SizedBox(height: 10,),
+		              //for displaying mood hashtags
                   Text('#moodtags #moodtags #moodtags', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic, fontSize: 16),overflow: TextOverflow.ellipsis, maxLines: 2),
                   SizedBox(height: 50,),
@@ -1007,7 +1071,9 @@ class MoodItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+		                //for liking/unliking content, with corresponding count
                     Pallets(icon: Icons.favorite_border, text: '333K',),
+		                //navigates user to content's comment, with corresponding count
                     Pallets(icon: Icons.comment, text: '333K', tapped: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return CommentsMood();
@@ -1032,7 +1098,7 @@ class MoodItem extends StatelessWidget {
 }
 
 
-
+//uploaded contents pallets layout
 class Pallets extends StatelessWidget {
    Pallets({
     Key? key,
@@ -1061,6 +1127,7 @@ class Pallets extends StatelessWidget {
   }
 }
 
+//Moments/stories layout
 class Stories extends StatelessWidget {
   const Stories({
     Key? key,
@@ -1079,6 +1146,7 @@ class Stories extends StatelessWidget {
         width: 140,
         height: 190,
         decoration: BoxDecoration(
+	          //image/video of last posted item
             image: DecorationImage(image: AssetImage('assets/welcome.png'), fit: BoxFit.cover),
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -1105,6 +1173,7 @@ class Stories extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+		                //name of user
                     Text('Mark Alice', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,
                         fontSize: 12),),
                     SizedBox(height: 5),
@@ -1112,6 +1181,7 @@ class Stories extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center ,
                       children: [
+			                  //time posted
                         Text(' 20m', style: TextStyle(color: Colors.white, fontSize: 12), ),
                         SizedBox(width: 3,),
                         Text('.', style: TextStyle(color: Colors.white, fontSize: 12), ),
@@ -1120,6 +1190,7 @@ class Stories extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
+		 	                      //number of views of current items in Moments
                             Text('3.2K', style: TextStyle(color: Colors.white, fontSize: 12),),
                             SizedBox(width: 2,),
                             Icon(Icons.remove_red_eye, color: Colors.white, size: 18,)
@@ -1138,6 +1209,7 @@ class Stories extends StatelessWidget {
 
               ),
             ),
+	          //Moments/stories count
             Positioned(
               right: 10,
               top: 10,

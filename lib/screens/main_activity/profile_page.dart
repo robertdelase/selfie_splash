@@ -26,6 +26,7 @@ class ProfilePage extends StatelessWidget {
               color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w600),
         ),
         actions: [
+	        //onclick takes user to the menu profile page
           GestureDetector(
             onTap: (){Navigator.pushNamed(context, 'profile_menu');},
             child: Image.asset(
@@ -41,6 +42,7 @@ class ProfilePage extends StatelessWidget {
           children: [
             Stack(
               children: [
+		            //displays cover image of user. The same image as the user's profile pic
                 Container(
                   width: double.infinity,
                   height: 200,
@@ -49,8 +51,8 @@ class ProfilePage extends StatelessWidget {
                           image: AssetImage('assets/selfie1.jpeg'),
                           fit: BoxFit.cover)),
                 ),
+		            //profile container colour is dependent on the colour family a user chooses
                 Center(
-                  //Profile Container colour is dependent on the user's family colour
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.85,
                     height: 420,
@@ -64,39 +66,35 @@ class ProfilePage extends StatelessWidget {
                           top: 25.0, left: 20, right: 20,),
                       child: Column(
                         children: [
+			                    //displays the user's profile pic
                           CircleAvatar(
                             radius: 120,
                             backgroundImage: AssetImage('assets/selfie1.jpeg'),
                           ),
-                          SizedBox(
-                            height: 15,
-                          ),
+                          SizedBox(height: 15,),
+			                    //displays the user's name with user's country flag
                           Text('Princess Sersei🇬🇭', style: kOnboardTextSmall.copyWith(fontSize:22, fontWeight: FontWeight.bold),),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                              'Sersei is the name not your regular gal don\'t forget to smile ;)',
+                          SizedBox(height: 10,),
+			                    //displays the user's bio
+                          Text('Sersei is the name not your regular gal don\'t forget to smile ;)',
                               overflow: TextOverflow.ellipsis, maxLines: 3,
                               textAlign: TextAlign.center, style: kOnboardTextSmall.copyWith(fontSize: 16, wordSpacing: 0.2),),
-                          SizedBox(
-                            height: 20,
-                          ),
+                          SizedBox(height: 20,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+			                        //displays the user's birthday
                               Row(
                                 children: [
                                   Icon(Icons.cake, color: Colors.white,),
                                   Text('11/06/1995 ', style: kOnboardTextSmall.copyWith(fontSize: 15),)
                                 ],
-                              ), SizedBox(width: 5,),
-                              Container(
-                                width: 1,
-                                height: 28,
-                                color: Colors.white,
-                              ),SizedBox(width: 5,),
+                              ), 
+			                        SizedBox(width: 5,),
+                              Container(width: 1,height: 28,color: Colors.white,),
+ 			                        SizedBox(width: 5,),
+			                        //displays status. This is how it appears on very user's own profile
                               Row(
                                 children: [
                                   Icon(Icons.favorite, color: Colors.white,),
@@ -112,9 +110,7 @@ class ProfilePage extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
@@ -123,17 +119,20 @@ class ProfilePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+		              //displays the Moments/stories of the user when the user uploads them. Disappears when there are none
                   GestureDetector(
                   onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Moments()));
                     }, child: HighLights(
                           text: 'Moments',
                           image: 'assets/welcome.png',
                         ),)
+			                  //displays the user's shop when created
                         /*
                         *HighLights(
                           text: 'Shops(23)',
                           image: 'assets/welcome.png',
                         ),
+			                  //displays the user's pages when created
                         HighLights(
                           text: 'Pages(1)',
                           image: 'assets/welcome.png',
@@ -141,9 +140,7 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20,),
                   ContainerCard(
                       child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,6 +149,7 @@ class ProfilePage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+			                    //displays the user's mood emoji
                           Row(
                             children: [
                               Text('Mood: ', style: kSimpleBasicText.copyWith(
@@ -163,6 +161,7 @@ class ProfilePage extends StatelessWidget {
                           SizedBox(height: 20,),
                           Row(
                             children: [
+			                        //allows user to update/edit mood onclick
                               GestureDetector(onTap: (){
                                 Navigator.push(context, MaterialPageRoute(builder: (context) =>
                                     AddEditMood())
@@ -171,6 +170,7 @@ class ProfilePage extends StatelessWidget {
                               SizedBox(width: 15),
                               Container(color: Colors.grey, width: 1, height: 35,),
                               SizedBox(width: 15),
+			                        //allows user to view his/her mood history
                               GestureDetector(onTap: (){
                                 Navigator.push(context, MaterialPageRoute(builder: (context) =>
                                     ProfileMood())
@@ -180,13 +180,11 @@ class ProfilePage extends StatelessWidget {
                                   Text(
                                     '(25)',
                                     style: TextStyle(
-                                      color: Colors.grey,
-                                    ),
+                                      color: Colors.grey,),
                                   ),
                                   Icon(
                                     Icons.arrow_forward_ios_rounded,
-                                    size: 20,
-                                    color: Colors.grey,
+                                    size: 20, color: Colors.grey,
                                   )
                                 ],
                               ))
@@ -195,25 +193,22 @@ class ProfilePage extends StatelessWidget {
 
                         ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10,),
+		                  //displays user's mood text/caption
                       Text('Not stopping still I get to the top.', style: kSimpleBasicText,overflow: TextOverflow.ellipsis,
                         maxLines: 2,),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10,),
+		                  //displays mood hashtags
                       Text('#growth #billionaire', style: TextStyle(fontStyle: FontStyle.italic, color: Colors.purple,
                       fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis, maxLines: 1,),
                     ],
                   )),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20,),
                   ContainerCard(
                       child: Column(
                     children: [
                       //Button colours dependent on the user's family colour
+		                  //allows user to change their family colour
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 5),
                         child: SizedBox(
@@ -230,6 +225,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                       ),
+		                  //navigates user to the edit profile page to edit their profile details
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 5),
                         child: SizedBox(
@@ -249,6 +245,8 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                       ),
+		                //navigates user to their social circle/follower's & following list
+		                //text also displays the number of followers the user has
                     Container(
                       margin: EdgeInsets.symmetric(vertical: 5),
                       child: SizedBox(
@@ -270,9 +268,8 @@ class ProfilePage extends StatelessWidget {
                     ),
                     ],
                   )),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: 20,),
+		              //displays the user's gallery
                   ContainerCard(
                       child: Container(
                     padding: EdgeInsets.all(1),
@@ -284,6 +281,7 @@ class ProfilePage extends StatelessWidget {
                         crossAxisSpacing: 10,
                       childAspectRatio: 0.9,
                       children: [
+			                  //displays the user's posted selfies with corresponding count
                         GestureDetector(onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) =>
                               ProfileSelfies())
@@ -304,6 +302,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         ),
                         ),
+			                  //displays the user's posted posts with corresponding count
                         GestureDetector(onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) =>
                               ProfilePosts())
@@ -324,6 +323,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         ),
                         ),
+			                  //displays the user's posted memes with corresponding count
                         GestureDetector(onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) =>
                               ProfileMemes())
@@ -343,6 +343,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         ),
                         ),
+                        //displays the user's posted svlogs with corresponding count
                         GestureDetector(onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) =>
                               ProfileSVlogs())
@@ -362,6 +363,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         ),
                         ),
+			                  //displays the Selfies, Posts, Memes & SVlogs the user has been tagged with, with corresponding count
                         GestureDetector(onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) =>
                               ProfileTags())
@@ -394,7 +396,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
-
+//not used currently
 class ProfileButton extends StatelessWidget {
   ProfileButton({
     Key? key,
@@ -427,7 +429,7 @@ class ProfileButton extends StatelessWidget {
         );
   }
 }
-
+//highlights widgets layout
 class HighLights extends StatelessWidget {
   const HighLights({Key? key, required this.text, required this.image})
       : super(key: key);
@@ -482,7 +484,7 @@ class ContainerCard extends StatelessWidget {
     );
   }
 }
-
+//dialog that allows users to change their family colour
 Widget ChangeFamilyModal(BuildContext context) =>AlertDialog(
   backgroundColor: Colors.transparent,
   contentPadding: EdgeInsets.all(10),

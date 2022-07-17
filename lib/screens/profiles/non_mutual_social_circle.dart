@@ -33,6 +33,7 @@ class NonMutualSocialCircleState extends State<NonMutualSocialCircle> {
                   color: Colors.black,)),
                 elevation: 0,
                 titleSpacing: 0,
+                //title text
                 title: Text('Social Circle', style: kOnboardTextBig.copyWith(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
                 toolbarHeight: 70,
                 bottom: TabBar(
@@ -48,7 +49,9 @@ class NonMutualSocialCircleState extends State<NonMutualSocialCircle> {
                     tabPosition: TabPosition.bottom,
                   ),
                   tabs: [
+                    //displays user's followers with corresponding count
                     Tab(text: '123K followers',),
+		                //displays user's following with corresponding count
                     Tab(text: '222 following',),
                   ],
                 ),
@@ -58,6 +61,7 @@ class NonMutualSocialCircleState extends State<NonMutualSocialCircle> {
           body: TabBarView(
               children: [
                 // first tab bar view widget
+		            //displays user's follower list
                 SingleChildScrollView(
                   child: Column(
                     children: [
@@ -88,6 +92,7 @@ class NonMutualSocialCircleState extends State<NonMutualSocialCircle> {
                 ),
 
                 // second tab bar view widget
+		            //displays user's following list
                 SingleChildScrollView(
                   child: Column(
                     children: [
@@ -123,7 +128,7 @@ class NonMutualSocialCircleState extends State<NonMutualSocialCircle> {
     );
   }
 }
-
+//for searching names of profiles in each tab
 class SearchInput extends StatelessWidget {
   SearchInput({
     Key? key,
@@ -203,6 +208,7 @@ class ItemFollower extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+		                //displays user's profile pic. Onclick takes user to that user's profile
                     GestureDetector(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -214,6 +220,7 @@ class ItemFollower extends StatelessWidget {
                         backgroundImage: AssetImage('assets/selfie1.jpeg'),),
                     ),
                     SizedBox(width: 5,),
+		                //displays user's name with corresponding country flag. Onclick navigates to that user's profile
                     Expanded(child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -227,12 +234,14 @@ class ItemFollower extends StatelessWidget {
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                         ),
                         SizedBox(height: 3,),
+			                  //displays one line preview of user's bio
                         Text('Welcome to my humble page.', overflow: TextOverflow.ellipsis, maxLines: 1,
                           style: TextStyle(color: Colors.grey, fontSize: 13),)
                       ],
                     ),),
                   ],),),
                 SizedBox(width: 3,),
+		            //allows other users to follow the user
                 ElevatedButton(onPressed: (){showDialog(context: context, builder: FollowModal);},
                   child: Text('Follow'),
                   style: ElevatedButton.styleFrom(
@@ -317,6 +326,7 @@ class ItemFollower1 extends StatelessWidget {
                     ),),
                   ],),),
                 SizedBox(width: 3,),
+		            //allows users to accept follow request from the user
                 ElevatedButton(onPressed: (){showDialog(context: context, builder: AcceptModal);},
                   child: Text('Accept As?'),
                   style: ElevatedButton.styleFrom(
@@ -400,6 +410,7 @@ class ItemFollowing extends StatelessWidget {
                     ),),
                   ],),),
                 SizedBox(width: 3,),
+		            //allows users to change follower status or unfollow the user completely
                 ElevatedButton(onPressed: (){showDialog(context: context, builder: ChangeStatusModal);},
                   child: Text('Following', style: TextStyle(color: Colors.black),),
                   style: ElevatedButton.styleFrom(
@@ -419,7 +430,7 @@ class ItemFollowing extends StatelessWidget {
     );
   }
 }
-
+//allows users to follow another user by selecting from the follow options dialog
 Widget FollowModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,
@@ -481,7 +492,8 @@ Widget FollowModal(BuildContext context) =>AlertDialog(
       )
   ),
 );
-
+//allows users to accept follow request
+//whatever option the receiving user selects is displayed on the status side of both sender's & receiver's profiles
 Widget AcceptModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,
@@ -543,7 +555,8 @@ Widget AcceptModal(BuildContext context) =>AlertDialog(
       )
   ),
 );
-
+//allows users to change follower status or unfollow user entirely
+//whatever option the receiving user selects is displayed on the status side of both sender's & receiver's profiles
 Widget ChangeStatusModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,

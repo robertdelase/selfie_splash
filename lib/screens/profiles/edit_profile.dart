@@ -16,7 +16,7 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
 
   String c_string = 'Select your country';
-
+  //for user birthday date selection
   DateTime selectedDate = DateTime.now();
   TextEditingController _date = new TextEditingController();
 
@@ -44,6 +44,7 @@ class _EditProfileState extends State<EditProfile> {
           elevation: 0.2,
           titleSpacing: 0,
           leading: IconButton(onPressed: (){ Navigator.pop(context);}, icon: Icon(Icons.arrow_back, color: Colors.black,),),
+	        //page title
           title: Text('Edit Profile', style: kOnboardTextBig.copyWith(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
           toolbarHeight: 70,
         ),
@@ -59,6 +60,7 @@ class _EditProfileState extends State<EditProfile> {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
+			                  //displays current user's profile pic or icon placeholder if no pic has been used
                         CircleAvatar(
                           radius: 90,
                           backgroundImage: AssetImage('assets/selfie1.jpeg'),),
@@ -79,6 +81,7 @@ class _EditProfileState extends State<EditProfile> {
                                     color: Colors.blue,
                                     shape: BoxShape.circle
                                 ),
+                                //allows user to upload profile pic from gallery or take new one onclick
                                 child: IconButton(onPressed: (){}, icon: Icon(Icons.photo_camera,
                                   color: Colors.white, size: 35,), padding: EdgeInsets.zero,),
                               )
@@ -88,10 +91,13 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                   ),
                   SizedBox(height: 20,),
+		              //for inputting/updating username
                   TextInputOne(title: 'Username', hint: '', changed: (value){},),
+		              //for inputting/updating user's bio
                   TextInputOne(title: 'About Me', hint: '', changed: (value){},),
                   SizedBox(height: 30,),
-                 Column(
+		              //for selecting/updating current country
+                  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Country', style: TextStyle(fontSize: 16, color: Colors.blueGrey, fontWeight: FontWeight.bold),),
@@ -127,6 +133,7 @@ class _EditProfileState extends State<EditProfile> {
                       ],
                     ),
                   SizedBox(height: 30,),
+		              //for selecting date of birth
                   GestureDetector(
                       onTap: () => _selectDate(context),
                       child: AbsorbPointer(
@@ -154,12 +161,14 @@ class _EditProfileState extends State<EditProfile> {
                         ),
                       ),
                     ),
-
+		              //for updating email
                   TextInputOne(title: 'Email', hint: '', changed: (value){},),
+		              //for entering old password
                   TextInputOne(title: 'Old Password', hint: '', changed: (value){},),
+		              //for entering new password
                   TextInputOne(title: 'New Password', hint: '', changed: (value){},),
                   SizedBox(height: 20,),
-
+		              //for saving any changes
                   ElevatedButton(onPressed: (){}, child: Text('Save', style: TextStyle(fontSize: 20),),
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -175,7 +184,7 @@ class _EditProfileState extends State<EditProfile> {
     );
   }
 }
-
+//input widget layout
 class TextInputOne extends StatelessWidget {
  TextInputOne({
     Key? key,

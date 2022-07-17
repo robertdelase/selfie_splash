@@ -16,6 +16,7 @@ class AddEditMood extends StatelessWidget {
         elevation: 0.2,
         titleSpacing: 0,
         leading: IconButton(onPressed: (){ Navigator.pop(context);}, icon: Icon(Icons.arrow_back, color: Colors.black,),),
+	      //title text of page
         title: Text('My Mood', style: kOnboardTextBig.copyWith(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
         toolbarHeight: 70,
       ),
@@ -29,18 +30,23 @@ class AddEditMood extends StatelessWidget {
                   children: [
                   Text('Select Mood Icon:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueGrey),),
                     SizedBox(width: 10),
+		                //onclick opens a popup menu from which user can select any icon
+		                //"assets/m1.png" is default icon when no icon is selected
                     GestureDetector(onTap: (){
                       showDialog(context: context, builder: SelectMoodModal);
                     }, child: Image.asset('assets/m1.png', width: 40, height: 40,),)
                   ]
                 ),
                 SizedBox(height: 30),
+		            //allows user to input mood text/caption
                 TextInputOne(title: 'Edit Mood Text', hint: 'mood text', changed: (value){},),
                 SizedBox(height: 30),
+		            //allows user ot input mood hashtags
                 TextInputOne(title: 'Edit Mood Tag', hint: 'mood hashtag', changed: (value){},),
                 SizedBox(height: 40),
                 Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+		                //allows user to discard changes
                     Expanded(
                       child: ElevatedButton(onPressed: (){Navigator.pop(context);}, child: Text('BACK', style: TextStyle(fontSize: 20),),
                         style: ElevatedButton.styleFrom(
@@ -51,6 +57,7 @@ class AddEditMood extends StatelessWidget {
                       )
                     ),
                     SizedBox(width: 20,),
+                    //allows user to save changes and update mood
                     Expanded(
                       child: ElevatedButton(onPressed: (){}, child: Text('SAVE', style: TextStyle(fontSize: 20),),
                         style: ElevatedButton.styleFrom(
@@ -70,7 +77,7 @@ class AddEditMood extends StatelessWidget {
     );
   }
 }
-
+//input widget layout
 class TextInputOne extends StatelessWidget {
  TextInputOne({
     Key? key,
@@ -106,7 +113,7 @@ class TextInputOne extends StatelessWidget {
     );
   }
 }
-
+//opens a popup menu with mood icons from which a user can select any
 Widget SelectMoodModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,

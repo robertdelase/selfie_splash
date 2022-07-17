@@ -22,6 +22,7 @@ class HomeState extends State<Home> {
 
   int selectedPage = 0;
 
+ //Main Activity Pages
   final _mainActivityPages = [
     HomePage(),
   //SelfieOfTheWeekPage(),
@@ -34,6 +35,7 @@ class HomeState extends State<Home> {
     return Scaffold(
       extendBody: true,
       body: _mainActivityPages[selectedPage], //initial value is 0 some HomePage will be shown first
+      //bottom navigation for main activity
       bottomNavigationBar: CurvedNavigationBar(
         height: 60.0,
         items: <Widget> [

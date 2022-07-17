@@ -21,6 +21,7 @@ class CommentsMood extends StatelessWidget {
         leading: IconButton(onPressed: (){Navigator.pop(context);}, icon: Icon(Icons.arrow_back, color: Colors.black,)),
         elevation: 0.5,
         titleSpacing: 0,
+	//displays name of poster with corresponding item (Mood)
         title: Text('Alice Stark\'s mood', style: kOnboardTextBig.copyWith(color: Colors.black,
             fontSize: 22, fontWeight: FontWeight.w600),),
         toolbarHeight: 70,
@@ -31,7 +32,9 @@ class CommentsMood extends StatelessWidget {
           child: SingleChildScrollView(
                 child: Column(
                   children: [
+		    //displays uploaded content being commented on
                     CommentMoodItem(),
+		    //displays comments under content
                     Comment(),
                     Comment(),
                     Comment(),
@@ -53,6 +56,7 @@ class CommentsMood extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+	      //for inputing and posting comment
               Expanded(
                 child: TextField(
                   keyboardType: TextInputType.multiline,
@@ -69,9 +73,10 @@ class CommentsMood extends StatelessWidget {
                   ),
                 ),
               ),
-
+	      //for adding emoji react to comment
               IconButton(onPressed: (){ showDialog(context: context, builder: CommentMoodModal);},
                   icon: Icon(Icons.mood, color: Colors.grey, size: 32)),
+	      //for sending/posting comment when ready
               IconButton(onPressed: (){}, icon: Icon(Icons.send, color: Colors.grey, size: 32)),
             ],
           ),
@@ -81,7 +86,7 @@ class CommentsMood extends StatelessWidget {
   }
 }
 
-
+//comment layout
 class Comment extends StatelessWidget {
   const Comment({Key? key}) : super(key: key);
 
@@ -97,6 +102,7 @@ class Comment extends StatelessWidget {
             children: [
               Row(
                 children: [
+		  //for displaying commenter's profile pic. Onclick navigates to poster's profile
                   GestureDetector(
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -109,6 +115,7 @@ class Comment extends StatelessWidget {
                   Column(
                     crossAxisAlignment:  CrossAxisAlignment.start,
                     children: [
+		       //for displaying commenter's name with country flag. Onclick navigates to poster's profile
                       GestureDetector(
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -119,11 +126,13 @@ class Comment extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
+		      //comment text
                       Text('Smile :)', overflow: TextOverflow.ellipsis, maxLines: 4,)
                     ],
                   )
                 ],
               ),
+	      //comment emoji react located far right of comment
               Image.asset('assets/m1.png', width: 50, height: 50,),
 
             ],
@@ -132,17 +141,21 @@ class Comment extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+	    //comment time posted
             Text('1h', textAlign: TextAlign.center,),
             Row(
               children: [
+		//allows user to react to a comment onclick
                 GestureDetector(
                     onTap: (){
                       showDialog(context: context, builder: ReactionModal);
                     },
                     child: Icon(Icons.favorite, color: Colors.grey, size: 30,)),
                 SizedBox(width: 10,),
+		//react count
                 Text('3'),
                 SizedBox(width: 10,),
+		//allows users to view reacts on the comment
                 GestureDetector(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -155,31 +168,39 @@ class Comment extends StatelessWidget {
                         fit: StackFit.loose,
                         clipBehavior: Clip.none,
                         children: [
+			  //leading react icon
                           Icon(Icons.favorite, color: Colors.red, size: 30,),
+			  //second leading react icon
                           Positioned (left:12, top: 5,  child: Icon(Icons.favorite, color: Colors.blue, size: 30,),),
+			  //third leading react icon
                           Positioned(left:25, top: 9,  child: Icon(Icons.favorite, color: Colors.green, size: 30,),),
                         ],
                       ))),
               ],
             ),
+	    //allows users to reply to a comment onclick
             Text('Reply', textAlign: TextAlign.center,),
 
           ],
         ),
         SizedBox(height: 20,),
+	//allows users to view all replies to a comment onclick
         Text('View all replies', style: TextStyle(fontWeight: FontWeight.bold),),
         SizedBox(height: 10,),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Row(
             children: [
+	      //displays profile pic of replier
               CircleAvatar(radius: 18,backgroundImage: AssetImage('assets/selfie.jpg')),
               SizedBox(width: 5,),
               Column(
                 crossAxisAlignment:  CrossAxisAlignment.start,
                 children: [
+		  //displays name of replier with country flag
                   Text('Emily Lina🇳🇮',overflow: TextOverflow.ellipsis, maxLines: 1,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),),
+		  //displays first line of reply under a comment
                   Text('I have a thought on this though.',overflow: TextOverflow.ellipsis, maxLines: 1,
                     style: TextStyle(fontSize: 12),)
                 ],
@@ -192,7 +213,7 @@ class Comment extends StatelessWidget {
     );
   }
 }
-
+//comment design layout
 class ContainerCard extends StatelessWidget {
   const ContainerCard({Key? key, required this.child}) : super(key: key);
 
@@ -219,7 +240,7 @@ class ContainerCard extends StatelessWidget {
 }
 
 
-//widgets
+//widgets for uploaded content being commented on
 class CommentMoodItem extends StatelessWidget {
   const CommentMoodItem({
     Key? key,
@@ -244,6 +265,7 @@ class CommentMoodItem extends StatelessWidget {
                     children: [
                       Row(
                         children: [
+			  //displays poster's profile pic. Onclick navigates to poster's profile
                           GestureDetector(
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -259,6 +281,7 @@ class CommentMoodItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+			      //displays poster's name with country flag. Onclick navigates to poster's profile
                               GestureDetector(
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -273,9 +296,11 @@ class CommentMoodItem extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+				  //mood indicator
                                   Text('Mood ', style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,
                                       fontSize: 13, fontWeight: FontWeight.w500),),
                                   Image.asset('assets/indicator_mood.png', width: 20, height: 20),
+				  //time posted
                                   Text(' . 20m', style: TextStyle(fontSize: 13),),
                                 ],
                               ),
@@ -283,6 +308,7 @@ class CommentMoodItem extends StatelessWidget {
                           ),
                         ],
                       ),
+		      //displays popup menu onclick
                       FocusedMenuHolder(
                         menuWidth: MediaQuery.of(context).size.width * 0.6,
                         menuOffset: 10,
@@ -314,11 +340,14 @@ class CommentMoodItem extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+			  //displays mood emoji 
                           Image.asset('assets/m32.png', width: 40, height: 40),
                           SizedBox(height: 10,),
+			  //displays caption of content
                           Text("Where users tap to switch between tab/fragment pages of the Activity.", style: kOnboardTextSmallPost.copyWith(color: Colors.black,
                               fontSize: 16), overflow: TextOverflow.ellipsis, maxLines: 4,),
                           SizedBox(height: 10,),
+			  //displays hashtags on content
                           Text('#hashtags #hashtags #hashtags', style: TextStyle(fontWeight: FontWeight.bold,
                               fontStyle: FontStyle.italic, fontSize: 16, color: Colors.red),
                             overflow: TextOverflow.ellipsis, maxLines: 2,),
@@ -333,7 +362,9 @@ class CommentMoodItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                          Pallets(icon: Icons.favorite_border, text: '1k',),
+			  //for liking/unlinking content, with corresponding count
+                          Pallets(icon: Icons.favorite_border, text: '1K',),
+			  //shows comment icon and count
                           Pallets(icon: Icons.comment, text: '43',),
                     ],
                   ),

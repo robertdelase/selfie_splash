@@ -21,6 +21,7 @@ class DiscoverPeople extends StatelessWidget {
         ],
         elevation: 0.2,
         titleSpacing: 0,
+	      //title text
         title: Text('Discover People', style: kOnboardTextBig.copyWith(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
         toolbarHeight: 70,
       ),
@@ -46,6 +47,7 @@ class DiscoverPeople extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 15,),
+		                  //page info text
                       Text('Add people to your social circle.', style: kOnboardTextSmall.copyWith(color: Colors.black87, fontWeight: FontWeight.bold, wordSpacing: 0.3),),
                       SizedBox(height: 15,),
                       Container(
@@ -58,6 +60,7 @@ class DiscoverPeople extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
+			                      //onclick allows user to find SelfieSplash users from their contacts
                             Container(
                               padding: EdgeInsets.all(15),
                               child: Column(
@@ -69,6 +72,7 @@ class DiscoverPeople extends StatelessWidget {
                               ),
                             ),
                             SizedBox(width: 1, height: 90, child: Container(color:Colors.grey),),
+			                      //onclick allows users to find SelfieSplash users in their vicinity
                             Container(
                               padding: EdgeInsets.all(15),
                               child: Column(
@@ -87,9 +91,7 @@ class DiscoverPeople extends StatelessWidget {
                 ),
               ),
 
-
-              //Messages
-
+		              //displays list of suggested profiles users can follow
                   Container(
                     padding: EdgeInsets.only(bottom: 15),
                     margin: EdgeInsets.only(top: 5),
@@ -124,7 +126,7 @@ class DiscoverPeople extends StatelessWidget {
 }
 
 
-
+//item widget layout
 class DiscoverItem extends StatelessWidget {
   const DiscoverItem({
     Key? key,
@@ -159,6 +161,7 @@ class DiscoverItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      //displays user's profile pic. Onclick navigates to user's profile
                       GestureDetector(
                           onTap: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -172,6 +175,7 @@ class DiscoverItem extends StatelessWidget {
                       Expanded(child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+			                    //displays user's name with country flag. Onclick navigates to user's profile
                           GestureDetector(
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -182,6 +186,7 @@ class DiscoverItem extends StatelessWidget {
                               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
                           ),
                           SizedBox(height: 3,),
+			                    //displays one line preview of user's bio
                           Text('Welcome to my humble page.', overflow: TextOverflow.ellipsis, maxLines: 1,
                             style: TextStyle(color: Colors.grey, fontSize: 13),)
                         ],
@@ -192,6 +197,7 @@ class DiscoverItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+		                  //allows users to follow that user
                       ElevatedButton(onPressed: (){showDialog(context: context, builder: FollowModal);},
                         child: Text('Follow'),
                         style: ElevatedButton.styleFrom(
@@ -201,6 +207,7 @@ class DiscoverItem extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 5,),
+		                  //allows users to delete that user from the list
                       Icon(Icons.delete_forever_rounded, color: Colors.red, size: 30,)
                     ],
                   )
@@ -213,7 +220,7 @@ class DiscoverItem extends StatelessWidget {
     );
   }
 }
-
+//allows users to follow that user
 Widget FollowModal(BuildContext context) =>AlertDialog(
   contentPadding: EdgeInsets.all(10),
   backgroundColor: Colors.transparent,

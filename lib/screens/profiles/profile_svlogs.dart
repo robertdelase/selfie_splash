@@ -17,6 +17,7 @@ class ProfileSVlogs extends StatelessWidget {
         title: Text('SVlogs', style: TextStyle(color: Colors.black, fontSize: 22, fontWeight: FontWeight.w600),),
         leading: PopContext(),
       ),
+	    //layout for SVlogs section of user's profile gallery
       body: Container(
         child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
@@ -30,7 +31,7 @@ class ProfileSVlogs extends StatelessWidget {
     );
   }
 }
-
+//layout of svlog items in gallery
 class ItemSVlog extends StatelessWidget {
   ItemSVlog({
     Key? key,

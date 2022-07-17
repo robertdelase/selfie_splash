@@ -25,6 +25,7 @@ class SplashPost extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+	      //for displaying selected image/video from phone gallery or camera
               Center(
                 child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
@@ -33,14 +34,19 @@ class SplashPost extends StatelessWidget {
               SizedBox(height: 20,),
               Container(color: Colors.blue, width: double.infinity,height: 1,),
               SizedBox(height: 25,),
+	      //for inputing caption text for the Post item
               InputBoxes(title: 'Add Caption', hint: 'caption', changed: (value){},),
               SizedBox(height: 25,),
+	      //for inputing hashtag(s) for the Post item
               InputBoxes(title: 'Add PostTag (i.e. #happypost #smilingpost)', hint: 'hashtag', changed: (value){},),
               SizedBox(height: 25,),
+	      //for inputing and selecting names of friends/followers to tag for the Post item
               InputBoxes(title: 'Tag People', hint: 'people you want to tag', changed: (value){},),
               SizedBox(height: 25,),
+	      //for inputing & selecting location for the Post item
               InputBoxes(title: 'Add Location', hint: 'location', changed: (value){},),
               SizedBox(height: 25,),
+	      //for saving and uploading item to Home Page
               ElevatedButton(onPressed: (){}, child: Text('SPLASH', style: TextStyle(fontSize: 20),),
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

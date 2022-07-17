@@ -23,7 +23,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
 
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  //select country string
   String c_string = 'Select your country';
   @override
   Widget build(BuildContext context) {
@@ -54,6 +54,7 @@ class _SignUpState extends State<SignUp> {
                   width: double.infinity,
                   child: Column(
                     children: [
+                      //for inputting user's name
                       InputText(text: "NAME",),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,6 +64,7 @@ class _SignUpState extends State<SignUp> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              //for displaying selected country with flag from country list
                               Expanded(
                                   child:Container(
                                       padding: EdgeInsets.all(10),
@@ -73,6 +75,7 @@ class _SignUpState extends State<SignUp> {
                                       ),
                                       child: Text(c_string)
                                   ), ),
+                              //for opening country list onclick
                               IconButton(onPressed: (){
                                 showCountryPicker(
                                   context: context,
@@ -89,9 +92,13 @@ class _SignUpState extends State<SignUp> {
                           )
                         ],
                       ),
+                      //for inputting email
                       InputText(text: "EMAIL", change: (value) => email = value,),
+                      //for inputting password
                       InputText(text: "PASSWORD", change: (value) => password = value),
+                      //for re-inputting password for confirmation
                       InputText(text: "CONFIRM PASSWORD", change: (value) => c_password = value),
+                      //for authenticating details and taking user to Home Page, with Profile Page generated as well
                       IntroButtons(
                           text: 'SIGN UP',
                           pressed: (){
@@ -107,6 +114,7 @@ class _SignUpState extends State<SignUp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('ALREADY HAVE AN ACCOUNT?' ,style: kOnboardTextSmall.copyWith(fontSize: 16),),
+                          //navigates user to Log In page
                           GestureDetector(onTap: (){Navigator.pushNamed(context, 'login');},child: Text(' LOGIN', style: kOnboardTextSmall.copyWith(fontSize: 16,
                           fontWeight: FontWeight.bold),)),
                         ],
@@ -116,6 +124,7 @@ class _SignUpState extends State<SignUp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('TROUBLE LOGGING IN?' ,style: kOnboardTextSmall.copyWith(fontSize: 16),),
+                          //navigates user to Retrieve Password page
                           GestureDetector(onTap: (){Navigator.pushNamed(context, 'retrieve');},child: Text(' CLICK HERE', style: kOnboardTextSmall.copyWith(fontSize: 16,
                           fontWeight: FontWeight.bold),)),
                         ],

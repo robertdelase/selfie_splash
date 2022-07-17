@@ -117,6 +117,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(width: 8,),
+                            //navigates user to Log In page
                             ElevatedButton(onPressed: (){Navigator.pushNamed(context, 'login');}, child: Text('LOGIN',
                               style:  GoogleFonts.varelaRound(fontSize: 18, color: Colors.blueAccent, fontWeight: FontWeight.w400),),
                               style: ElevatedButton.styleFrom(
@@ -128,6 +129,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               ),
                             ),
                             SizedBox(width: 10,),
+                            //navigates user to Sign Up page. Layout is below
                             IntroButtons(text: 'SIGN UP',),
 
                           ],
@@ -154,6 +156,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   *TextButton(
                       onPressed:() => controller.jumpToPage(4),
                       child: Text('SKIP', style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w400),)),*/
+                  //for first three onboarding pages
                   Center(
                     child: SmoothPageIndicator(
                       controller: controller,
@@ -191,6 +194,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  //for last onboarding page
                   Center(
                     child: SmoothPageIndicator(
                       controller: controller,
@@ -225,7 +229,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 }
-
+//intro buttons widget layout (Sign Up button)
 class IntroButtons extends StatelessWidget {
   const IntroButtons({
     Key? key,
