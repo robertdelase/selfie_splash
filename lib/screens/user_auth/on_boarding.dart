@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../constants.dart';
@@ -56,7 +57,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ),
               ),
-              Components(image: 'assets/onboard2.png',
+              Components(image: 'assets/onboard7.jpeg',
                 component: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -82,32 +83,57 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ],
                 ),
               ),
-              Components(image: 'assets/onboard4.jpg',
-                component: Column(
+
+              Container(
+                child: Stack(
                   children: [
-                    SizedBox(height: 100,),
-                    Text('Get Started!', style: GoogleFonts.varelaRound(fontSize: 28, fontWeight: FontWeight.w500,
-                        color: Colors.white),),
-                    SizedBox(height: 25,),
-                    Text('The selfie world awaits you!', style: GoogleFonts.varelaRound(fontSize: 22, fontWeight: FontWeight.w400,
-                        color: Colors.white),),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.6,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(onPressed: (){Navigator.pushNamed(context, 'login');}, child: Text('LOGIN',
-                          style:  GoogleFonts.varelaRound(fontSize: 18, color: Colors.blueAccent, fontWeight: FontWeight.w400),),
-                          style: ElevatedButton.styleFrom(
-                            elevation: 0,
-                            primary: Colors.white,
-                            padding: EdgeInsets.symmetric(horizontal: 65, vertical: 18),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50))
-                          ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.65,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.elliptical(MediaQuery.of(context).size.width*0.6, 80.0),
+                          bottomRight: Radius.elliptical(MediaQuery.of(context).size.width*0.6, 80.0),
                         ),
-                        SizedBox(width: 10,),
-                        IntroButtons(text: 'SIGN UP',),
-                      ],
-                    )
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/onboard5.jpeg')
+                        )
+                      ),
+                    ),
+                    Positioned(
+                      width: MediaQuery.of(context).size.width,
+                      top: MediaQuery.of(context).size.height * 0.68,
+                        child: Column(
+                          children: [
+                          Text('Get Started!', style: GoogleFonts.varelaRound(fontSize: 28, fontWeight: FontWeight.w600,
+                              color: Colors.blue),),
+                          SizedBox(height: 25,),
+                          Text('The selfie world awaits you!', style: GoogleFonts.varelaRound(fontSize: 22, fontWeight: FontWeight.w400,
+                              color: Colors.black),),],)
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height * 0.83,
+                        child:  Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(width: 8,),
+                            //navigates user to Log In page
+                            ElevatedButton(onPressed: (){Navigator.pushNamed(context, 'login');}, child: Text('LOGIN',
+                              style:  GoogleFonts.varelaRound(fontSize: 18, color: Colors.blueAccent, fontWeight: FontWeight.w400),),
+                              style: ElevatedButton.styleFrom(
+                                  elevation: 0,
+                                  primary: Colors.white,
+                                  padding: EdgeInsets.symmetric(horizontal: 65, vertical: 18),
+                                  side: BorderSide(color: Colors.blue, width: 2),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                              ),
+                            ),
+                            SizedBox(width: 10,),
+                            //navigates user to Sign Up page. Layout is below
+                            IntroButtons(text: 'SIGN UP',),
+
+                          ],
+                        )),
                   ],
                 ),
               ),
@@ -122,7 +148,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ),*/
               width: size.width,
               padding: const EdgeInsets.all(10),
-              height: 80.0,
+              height: 90.0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -130,14 +156,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   *TextButton(
                       onPressed:() => controller.jumpToPage(4),
                       child: Text('SKIP', style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w400),)),*/
+                  //for first three onboarding pages
                   Center(
                     child: SmoothPageIndicator(
                       controller: controller,
                       count: 4,
                       effect: WormEffect(
                         dotColor: Colors.grey,
-                        dotHeight: 12,
-                        dotWidth: 12,
+                        dotHeight: 10,
+                        dotWidth: 10,
                         spacing: 15,
                         radius: 10,
                         activeDotColor: Colors.white,
@@ -163,21 +190,22 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ),*/
               width: size.width,
               padding: EdgeInsets.all(10),
-              height: 80.0,
+              height: 90.0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  //for last onboarding page
                   Center(
                     child: SmoothPageIndicator(
                       controller: controller,
                       count: 4,
                       effect: WormEffect(
                         dotColor: Colors.grey,
-                        dotHeight: 12,
-                        dotWidth: 12,
+                        dotHeight: 10,
+                        dotWidth: 10,
                         spacing: 15,
                         radius: 10,
-                        activeDotColor: Colors.white,
+                        activeDotColor: Colors.blue,
                         strokeWidth: 1.0,
                       ),
                       onDotClicked: (index) => controller.animateToPage(
@@ -201,7 +229,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 }
-
+//intro buttons widget layout (Sign Up button)
 class IntroButtons extends StatelessWidget {
   const IntroButtons({
     Key? key,

@@ -23,7 +23,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
 
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  //select country string
   String c_string = 'Select your country';
   @override
   Widget build(BuildContext context) {
@@ -32,11 +32,11 @@ class _SignUpState extends State<SignUp> {
         height: double.infinity,
         decoration: BoxDecoration(
           image:  DecorationImage(
-            image: AssetImage('assets/login.jpg'),fit: BoxFit.cover
+            image: AssetImage('assets/login.png'),fit: BoxFit.cover
           ),
         ),
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+          padding: EdgeInsets.symmetric(horizontal: 7),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -54,6 +54,7 @@ class _SignUpState extends State<SignUp> {
                   width: double.infinity,
                   child: Column(
                     children: [
+                      //for inputting user's name
                       InputText(text: "NAME",),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,30 +64,25 @@ class _SignUpState extends State<SignUp> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                padding: EdgeInsets.all(8),
-                                height: 40,
-                                width: 250,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)
+                              //for displaying selected country with flag from country list
+                              Expanded(
+                                  child:Container(
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(20)
 
-                                ),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.flag, color: Colors.grey,),
-                                    SizedBox(width: 10,),
-                                    Text(c_string)
-                                  ],
-                                ),
-                              ),
+                                      ),
+                                      child: Text(c_string)
+                                  ), ),
+                              //for opening country list onclick
                               IconButton(onPressed: (){
                                 showCountryPicker(
                                   context: context,
-                                  showPhoneCode: true, // optional. Shows phone code before the country name.
+                                  showPhoneCode: false, // optional. Shows phone code before the country name.
                                   onSelect: (Country country) {
                                     setState(() {
-                                      c_string = '+${country.phoneCode} ${country.name}';
+                                      c_string = '${country.flagEmoji} ${country.name}';
                                     });
                                     print('Select country: ${country.e164Key}');
                                   },
@@ -96,9 +92,13 @@ class _SignUpState extends State<SignUp> {
                           )
                         ],
                       ),
+                      //for inputting email
                       InputText(text: "EMAIL", change: (value) => email = value,),
+                      //for inputting password
                       InputText(text: "PASSWORD", change: (value) => password = value),
+                      //for re-inputting password for confirmation
                       InputText(text: "CONFIRM PASSWORD", change: (value) => c_password = value),
+                      //for authenticating details and taking user to Home Page, with Profile Page generated as well
                       IntroButtons(
                           text: 'SIGN UP',
                           pressed: (){
@@ -114,6 +114,7 @@ class _SignUpState extends State<SignUp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('ALREADY HAVE AN ACCOUNT?' ,style: kOnboardTextSmall.copyWith(fontSize: 16),),
+                          //navigates user to Log In page
                           GestureDetector(onTap: (){Navigator.pushNamed(context, 'login');},child: Text(' LOGIN', style: kOnboardTextSmall.copyWith(fontSize: 16,
                           fontWeight: FontWeight.bold),)),
                         ],
@@ -123,6 +124,7 @@ class _SignUpState extends State<SignUp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('TROUBLE LOGGING IN?' ,style: kOnboardTextSmall.copyWith(fontSize: 16),),
+                          //navigates user to Retrieve Password page
                           GestureDetector(onTap: (){Navigator.pushNamed(context, 'retrieve');},child: Text(' CLICK HERE', style: kOnboardTextSmall.copyWith(fontSize: 16,
                           fontWeight: FontWeight.bold),)),
                         ],

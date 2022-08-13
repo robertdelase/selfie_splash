@@ -21,6 +21,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+    //select country string
     String c_string = 'Select your country';
     @override
     Widget build(BuildContext context) {
@@ -29,11 +30,11 @@ class _LoginPageState extends State<LoginPage> {
           height: double.infinity,
           decoration: BoxDecoration(
             image:  DecorationImage(
-                image: AssetImage('assets/login.jpg'),fit: BoxFit.cover
+                image: AssetImage('assets/login.png'),fit: BoxFit.cover
             ),
           ),
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+            padding: EdgeInsets.symmetric(horizontal: 7),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -51,8 +52,11 @@ class _LoginPageState extends State<LoginPage> {
                     width: double.infinity,
                     child: Column(
                       children: [
+                        //for inputting email
                         InputText(text: "EMAIL", change: (value) => email = value,),
+                        //for inputting password
                         InputText(text: "PASSWORD",  change: (value) => password = value),
+                        //for authenticating login details and taking user to Home Page
                         IntroButtons(text: 'LOGIN',
                           pressed: () async{
                           await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
@@ -64,6 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("DON'T HAVE AN ACCOUNT?" ,style: kOnboardTextSmall.copyWith(fontSize: 16),),
+                            //navigates user to Sign Up page
                             GestureDetector(onTap:(){Navigator.pushNamed(context, 'signUp');},child: Text(' SIGN UP', style: kOnboardTextSmall.copyWith(fontSize: 16,
                                 fontWeight: FontWeight.bold),)),
                           ],
@@ -73,6 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('TROUBLE LOGGING IN?' ,style: kOnboardTextSmall.copyWith(fontSize: 16),),
+                            //navigates user to Retrieve Password page
                             GestureDetector(onTap: (){
                               Navigator.pushNamed(context, 'retrieve');
                               },

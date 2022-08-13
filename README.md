@@ -1,10 +1,10 @@
-# selphie_splash
+# SelfieSplash
 
-The Documentation For the Selphie splash Flutter Project.
+The Documentation For the SelfieSplash Flutter Project.
 
 ## Getting Started
 
-This project is a starting point for a the selphie splash flutter project.
+This project is a starting point for a the SelfieSplash flutter project.
 
 ##The intro pages
 **The Onboarding pages are done leading to the signup page**

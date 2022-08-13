@@ -14,6 +14,7 @@ class RetrievePasswordPage extends StatefulWidget {
 }
 
 class _RetrievePasswordPageState extends State<RetrievePasswordPage> {
+  //select country string
   String c_string = 'Select your country';
   @override
   Widget build(BuildContext context) {
@@ -22,11 +23,11 @@ class _RetrievePasswordPageState extends State<RetrievePasswordPage> {
         height: double.infinity,
         decoration: BoxDecoration(
           image:  DecorationImage(
-              image: AssetImage('assets/login.jpg'),fit: BoxFit.cover
+              image: AssetImage('assets/login.png'),fit: BoxFit.cover
           ),
         ),
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+          padding: EdgeInsets.symmetric(horizontal: 7),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -45,14 +46,17 @@ class _RetrievePasswordPageState extends State<RetrievePasswordPage> {
                   child: Column(
                     children: [
                       Text('Enter your email and we will send you a token to reset your password', style: kOnboardTextSmall.copyWith(fontSize: 16),),
+                      //for inputting email
                       InputText(text: "EMAIL",),
                       SizedBox(height: 20,),
+                      //sends token to user's email to reset password
                       IntroButtonsTwo(text: 'RETRIEVE PASSWORD', ),
                       SizedBox(height: 20,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("ALREADY HAVE AN ACCOUNT?" ,style: kOnboardTextSmall.copyWith(fontSize: 16),),
+                          //navigates user to Log In page
                           GestureDetector(onTap: (){Navigator.pushNamed(context, 'login');},child: Text(' LOGIN', style: kOnboardTextSmall.copyWith(fontSize: 16,
                           fontWeight: FontWeight.bold),)),
                         ],
@@ -62,6 +66,7 @@ class _RetrievePasswordPageState extends State<RetrievePasswordPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("DON'T HAVE AN ACCOUNT?" ,style: kOnboardTextSmall.copyWith(fontSize: 16),),
+                          //navigates user to Sign Up page
                           GestureDetector(onTap: (){Navigator.pushNamed(context, 'signUp');},child: Text(' SIGN UP', style: kOnboardTextSmall.copyWith(fontSize: 16,
                               fontWeight: FontWeight.bold),)),
                         ],
