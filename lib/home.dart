@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'screens/main_activity/ads_page.dart';
-import 'screens/main_activity/home_page.dart';
-import 'screens/main_activity/profile_page.dart';
-import 'screens/main_activity/selfie_of_the_week_page.dart';
-import 'screens/main_activity/whats_on_page.dart';
-import 'screens/search/search.dart';
-import 'screens/profile_menus/profile_menu.dart';
-import 'screens/inbox/notifications.dart';
+import 'package:selphie_splash/screens/3_main_activity/4_ads_page/ads_page.dart';
+import 'screens/3_main_activity/4_ads_page/ads_page.dart';
+import 'screens/3_main_activity/1_home_page/home_page.dart';
+import 'screens/3_main_activity/5_profile_page/profile_page.dart';
+import 'screens/3_main_activity/2_selfie_of_the_week_page/selfie_of_the_week_page.dart';
+import 'screens/3_main_activity/3_whats_on_page/whats_on_page.dart';
+import 'screens/3_main_activity/4_ads_page/1_search_page/search.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
@@ -27,7 +26,7 @@ class HomeState extends State<Home> {
     HomePage(),
   //SelfieOfTheWeekPage(),
   // WhatsOnPage(),
-  // AdsPage(),
+    AdsPage(),
     ProfilePage()];
 
   @override
@@ -42,7 +41,7 @@ class HomeState extends State<Home> {
           Icon(Icons.home, size: 30, color: Colors.white,),
           //Icon(Icons.favorite, size: 30, color: Colors.white,),
           //Icon(Icons.star, size: 30, color: Colors.white,),
-          //Icon(Icons.search, size: 30, color: Colors.white,),
+          Icon(Icons.search, size: 30, color: Colors.white,),
           Icon(Icons.person, size: 30, color: Colors.white,),
         ],
         buttonBackgroundColor: Colors.blue,
