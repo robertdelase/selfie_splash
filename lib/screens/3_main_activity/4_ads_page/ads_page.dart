@@ -338,23 +338,11 @@ class PageAds extends StatelessWidget {
           SizedBox(height: 10,),
           Row(
             children: [
-              Expanded(
-                child: VerifiedPageAd(
-                  name: 'Access Bank Ghana🇬🇭',
-                ),
-              ),
+              VerifiedPageAd(name: 'Access Bank Ghana🇬🇭',),
               SizedBox(width: 3,),
-              Expanded(
-                  child: UnverifiedPageAd(
-                    name: 'Maria Photography🇬🇭',
-                  ),
-              ),
+              UnverifiedPageAd(name: 'Maria Photography🇬🇭',),
               SizedBox(width: 3,),
-              Expanded(
-                child: VerifiedPageAd(
-                  name: 'Access Ghana🇬🇭',
-                ),
-              ),
+              VerifiedPageAd(name: 'Access Ghana🇬🇭',),
             ],
           )
         ],
@@ -375,43 +363,44 @@ class VerifiedPageAd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 140,
-      decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/ad6.jpg'), fit: BoxFit.cover),
-          borderRadius: BorderRadius.all(Radius.circular(12))
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(5),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                        child: Text(name, overflow: TextOverflow.ellipsis, maxLines: 2,
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11, color: Colors.white),)),
-                    Icon(Icons.verified, size: 12, color: Colors.blue.shade900,),
-                  ],
-                ),
-              decoration: BoxDecoration(
-                color: Colors.black54,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(0),
-                    topRight: Radius.circular(0), bottomRight:Radius.circular(12), bottomLeft: Radius.circular(12)),
-              ),
-
+    return Expanded(
+        child: Container(
+            height: 140,
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage('assets/ad6.jpg'), fit: BoxFit.cover),
+                borderRadius: BorderRadius.all(Radius.circular(12))
             ),
-          ),
-        ],
-      )
-    );
+            child: Stack(
+              children: [
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                            child: Text(name, overflow: TextOverflow.ellipsis, maxLines: 2,
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11, color: Colors.white),)),
+                        Icon(Icons.verified, size: 12, color: Colors.blue.shade900,),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(0), bottomRight:Radius.circular(12), bottomLeft: Radius.circular(12)),
+                    ),
+
+                  ),
+                ),
+              ],
+            )
+        ));
   }
 }
 
@@ -426,35 +415,36 @@ class UnverifiedPageAd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 140,
-      decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/ad1.jpg'), fit: BoxFit.cover),
-          borderRadius: BorderRadius.all(Radius.circular(12))
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(5),
-              child: Text(name, overflow: TextOverflow.ellipsis, maxLines: 2,style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.white, fontSize: 11),),
-              decoration: BoxDecoration(
-                color: Colors.black54,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(0),
-                    topRight: Radius.circular(0), bottomRight:Radius.circular(12), bottomLeft: Radius.circular(12)),
-              ),
-
+    return Expanded(
+        child: Container(
+            height: 140,
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage('assets/ad1.jpg'), fit: BoxFit.cover),
+                borderRadius: BorderRadius.all(Radius.circular(12))
             ),
-          ),
-        ],
-      )
-    );
+            child: Stack(
+              children: [
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.all(5),
+                    child: Text(name, overflow: TextOverflow.ellipsis, maxLines: 2,style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white, fontSize: 11),),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(0),
+                          topRight: Radius.circular(0), bottomRight:Radius.circular(12), bottomLeft: Radius.circular(12)),
+                    ),
+
+                  ),
+                ),
+              ],
+            )
+        ));
   }
 }
 
@@ -499,11 +489,11 @@ class ShopAds extends StatelessWidget {
           SizedBox(height: 10,),
           Row(
             children: [
-              Expanded(child: ShopVerifiedAds(),),
+              ShopVerifiedAds(),
               SizedBox(width: 3,),
-              Expanded(child: ShopUnverifiedAds(),),
+              ShopUnverifiedAds(),
               SizedBox(width: 3,),
-              Expanded(child: ShopVerifiedAds(),),
+              ShopVerifiedAds(),
             ],
           )
         ],
@@ -519,7 +509,8 @@ class ShopVerifiedAds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Expanded(
+        child: Container(
           height: 140,
           decoration: BoxDecoration(
               color: Colors.white,
@@ -535,20 +526,20 @@ class ShopVerifiedAds extends StatelessWidget {
               Expanded(flex: 1,
                   child: Row(
                     children: [
-                    CircleAvatar(
-                      radius: 12,
-                      backgroundImage: AssetImage('assets/ad4.jpg'),
-                    ),
-                    SizedBox(width: 3,),
-                    Expanded(child: Row(
-                      children: [
-                        Expanded(
-                            child: Text('Adidas🇺🇸', overflow: TextOverflow.ellipsis, maxLines: 1,
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11),)),
-                        Icon(Icons.verified, size: 14, color: Colors.blue.shade900,),
-                      ],
-                    ),)
-                  ],))
+                      CircleAvatar(
+                        radius: 12,
+                        backgroundImage: AssetImage('assets/ad4.jpg'),
+                      ),
+                      SizedBox(width: 3,),
+                      Expanded(child: Row(
+                        children: [
+                          Expanded(
+                              child: Text('Adidas🇺🇸', overflow: TextOverflow.ellipsis, maxLines: 1,
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11),)),
+                          Icon(Icons.verified, size: 14, color: Colors.blue.shade900,),
+                        ],
+                      ),)
+                    ],))
               ,
               SizedBox(height: 3,),
               Expanded( flex: 4,
@@ -559,7 +550,7 @@ class ShopVerifiedAds extends StatelessWidget {
               )
             ],
           ),
-    );
+        ));
   }
 }
 
@@ -570,40 +561,42 @@ class ShopUnverifiedAds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-          height: 140,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: Colors.blueGrey,
+    return Expanded(
+      child: Container(
+        height: 140,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.blueGrey,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(12))
+        ),
+        padding: EdgeInsets.all(3),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(flex: 1,
+                child: Row(children: [
+                  CircleAvatar(
+                    radius: 12,
+                    backgroundImage: AssetImage('assets/adverts.jpg'),
+                  ),
+                  SizedBox(width: 3,),
+                  Expanded(child:
+                  Text('Venloh🇬🇭', overflow: TextOverflow.ellipsis, maxLines: 1,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11),),
+                  )
+                ],)),
+            SizedBox(height: 3,),
+            Expanded( flex: 4,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset('assets/adverts.jpg', fit: BoxFit.cover,),
               ),
-              borderRadius: BorderRadius.all(Radius.circular(12))
-          ),
-          padding: EdgeInsets.all(3),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(flex: 1,
-                  child: Row(children: [
-                    CircleAvatar(
-                      radius: 12,
-                      backgroundImage: AssetImage('assets/adverts.jpg'),
-                    ),
-                    SizedBox(width: 3,),
-                    Expanded(child:
-                    Text('Venloh🇬🇭', overflow: TextOverflow.ellipsis, maxLines: 1,
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11),),
-                    )
-                  ],)),
-              SizedBox(height: 3,),
-              Expanded( flex: 4,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset('assets/adverts.jpg', fit: BoxFit.cover,),
-                ),
-              )
-            ],
-          ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
@@ -647,86 +640,72 @@ class ShopNowAds extends StatelessWidget {
           SizedBox(height: 10,),
          Row(
               children: [
-                Expanded(
-                  child: Container(
-                    height: 140,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage('assets/ad5.jpg'), fit: BoxFit.cover),
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            right: 5,
-                            top: 5,
-                            child: Container(
-                                padding: EdgeInsets.all(3),
-                                decoration: BoxDecoration(
-                                  color: Colors.black54,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child:
-                                    Icon(Icons.collections, color: Colors.white, size: 18,)
-                            ),
-                          )
-                        ],
-                      )
-                  )),
+                ShopNowCollage(),
                 SizedBox(width: 3,),
-                Expanded(
-                  child: Container(
-                      height: 140,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage('assets/ad5.jpg'), fit: BoxFit.cover),
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            right: 5,
-                            top: 5,
-                            child: Container(
-                                padding: EdgeInsets.all(3),
-                                decoration: BoxDecoration(
-                                  color: Colors.black54,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child:
-                                Icon(Icons.collections, color: Colors.white, size: 18,)
-                            ),
-                          )
-                        ],
-                      )
-                  ),),
+                ShopNowSingle(),
                 SizedBox(width: 3,),
-                Expanded(
-                  child: Container(
-                      height: 140,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(image: AssetImage('assets/ad5.jpg'), fit: BoxFit.cover),
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            right: 5,
-                            top: 5,
-                            child: Container(
-                                padding: EdgeInsets.all(3),
-                                decoration: BoxDecoration(
-                                  color: Colors.black54,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child:
-                                Icon(Icons.collections, color: Colors.white, size: 18,)
-                            ),
-                          )
-                        ],
-                      )
-                  ),),
+                ShopNowCollage()
               ],
             ),
 
         ],
       ),
     );
+  }
+}
+
+//layout of single image item uploaded content
+class ShopNowSingle extends StatelessWidget {
+  ShopNowSingle({
+    Key? key,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: 140,
+        decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/ad3.jpg'), fit: BoxFit.cover),
+            borderRadius: BorderRadius.all(Radius.circular(12))
+
+        ),
+      )
+    );
+  }
+}
+
+//layout of multiple image item uploaded content
+class ShopNowCollage extends StatelessWidget {
+  ShopNowCollage({
+    Key? key,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+          height: 140,
+          decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/ad5.jpg'), fit: BoxFit.cover),
+              borderRadius: BorderRadius.all(Radius.circular(12))
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                right: 5,
+                top: 5,
+                child: Container(
+                    padding: EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child:
+                    Icon(Icons.collections, color: Colors.white, size: 18,)
+                ),
+              )
+            ],
+          )
+      ),);
   }
 }
 

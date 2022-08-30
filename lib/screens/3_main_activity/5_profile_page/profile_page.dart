@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:selphie_splash/constants.dart';
+import 'package:selphie_splash/screens/3_main_activity/5_profile_page/1_menu_page/profile_menu_items/profile_about.dart';
 
 import '../1_home_page/3_item_moments/moments.dart';
 import '../1_home_page/4_item_selfie/1_profile_page/2_mood_layout/profile_mood.dart';
@@ -112,7 +113,6 @@ class ProfilePage extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
@@ -142,7 +142,6 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20,),
                   ContainerCard(
                       child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,7 +154,7 @@ class ProfilePage extends StatelessWidget {
                           Row(
                             children: [
                               Text('Mood: ', style: kSimpleBasicText.copyWith(
-                                  color: Colors.grey.shade700,
+                                  color: Colors.grey.shade600,
                                   fontWeight: FontWeight.bold),),
                                   Image.asset('assets/m1.png', width: 40, height: 40,),
                             ],
@@ -205,7 +204,6 @@ class ProfilePage extends StatelessWidget {
                       fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis, maxLines: 1,),
                     ],
                   )),
-                  SizedBox(height: 20,),
                   ContainerCard(
                       child: Column(
                     children: [
@@ -270,124 +268,227 @@ class ProfilePage extends StatelessWidget {
                     ),
                     ],
                   )),
-                  SizedBox(height: 20,),
 		              //displays the user's gallery
-                  ContainerCard(
+                  //selfie gallery
+                  ContainerCard1(
                       child: Container(
-                    padding: EdgeInsets.all(1),
-                    height: MediaQuery.of(context).size.height * 0.8,
-                    child: GridView.count(
-                      physics: NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 15,
-                        crossAxisSpacing: 10,
-                      childAspectRatio: 0.9,
-                      children: [
-			                  //displays the user's posted selfies with corresponding count
-                        GestureDetector(onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                              ProfileSelfies())
-                          );
-                          }, child: Container(
-                          child: Column(
+                        child: Column(
                           children: [
                             Container(
-                              height: 160,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage('assets/selfie1.jpeg'), fit: BoxFit.cover)),
+                              padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Selfies', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                      color: Colors.grey.shade600),),
+                                      SizedBox(height: 3,),
+                                      Text('100', style: kSimpleBasicText.copyWith(color: Colors.grey),),
+                                    ],
+                                  ),
+                                  GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                                        return ProfileSelfies();
+                                      }));
+                                    }, child: Text('View All', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                      color: Colors.blueGrey)),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(height: 8,),
-                            Text('Selfies(110)', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold),)
+                            SizedBox(height: 10,),
+                            Row(
+                              children: [
+                                GallerySingle(),
+                                SizedBox(width: 3,),
+                                GalleryCollage(),
+                                SizedBox(width: 3,),
+                                GallerySingle(),
+                              ],
+                            )
                           ],
                         ),
-                        ),
-                        ),
-			                  //displays the user's posted posts with corresponding count
-                        GestureDetector(onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                              ProfilePosts())
-                          );
-                        }, child: Container(
-                          child: Column(
+                      )),
+                  //post gallery
+                  ContainerCard1(
+                      child: Container(
+                        child: Column(
                           children: [
                             Container(
-                              height: 160,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage('assets/selfie1.jpeg'), fit: BoxFit.cover)),
+                              padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Posts', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                          color: Colors.grey.shade600),),
+                                      SizedBox(height: 3,),
+                                      Text('100', style: kSimpleBasicText.copyWith(color: Colors.grey),),
+                                    ],
+                                  ),
+                                  GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                                        return ProfilePosts();
+                                      }));
+                                    }, child: Text('View All', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                      color: Colors.blueGrey)),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(height: 8,),
-                            Text('Posts(110)', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold),)
+                            SizedBox(height: 10,),
+                            Row(
+                              children: [
+                                GallerySingle(),
+                                SizedBox(width: 3,),
+                                GalleryCollage(),
+                                SizedBox(width: 3,),
+                                GalleryVideo(),
+                              ],
+                            )
                           ],
                         ),
-                        ),
-                        ),
-			                  //displays the user's posted memes with corresponding count
-                        GestureDetector(onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                              ProfileMemes())
-                          );
-                        }, child: Container( child: Column(
+                      )),
+                  //meme gallery
+                  ContainerCard1(
+                      child: Container(
+                        child: Column(
                           children: [
                             Container(
-                              height: 160,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage('assets/selfie1.jpeg'), fit: BoxFit.cover)),
+                              padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Memes', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                          color: Colors.grey.shade600),),
+                                      SizedBox(height: 3,),
+                                      Text('100', style: kSimpleBasicText.copyWith(color: Colors.grey),),
+                                    ],
+                                  ),
+                                  GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                                        return ProfileMemes();
+                                      }));
+                                    }, child: Text('View All', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                      color: Colors.blueGrey)),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(height: 8,),
-                            Text('Memes(110)', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold),)
+                            SizedBox(height: 10,),
+                            Row(
+                              children: [
+                                GallerySingle(),
+                                SizedBox(width: 3,),
+                                GalleryCollage(),
+                                SizedBox(width: 3,),
+                                GalleryVideo(),
+                              ],
+                            )
                           ],
                         ),
-                        ),
-                        ),
-                        //displays the user's posted svlogs with corresponding count
-                        GestureDetector(onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                              ProfileSVlogs())
-                          );
-                        }, child: Container( child: Column(
+                      )),
+                  //svlog gallery
+                  ContainerCard1(
+                      child: Container(
+                        child: Column(
                           children: [
                             Container(
-                              height: 160,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage('assets/selfie1.jpeg'), fit: BoxFit.cover)),
+                              padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('SVlogs', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                          color: Colors.grey.shade600),),
+                                      SizedBox(height: 3,),
+                                      Text('100', style: kSimpleBasicText.copyWith(color: Colors.grey),),
+                                    ],
+                                  ),
+                                  GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                                        return ProfileSVlogs();
+                                      }));
+                                    }, child: Text('View All', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                      color: Colors.blueGrey)),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(height: 8,),
-                            Text('SVlogs(110)', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold),)
+                            SizedBox(height: 10,),
+                            Row(
+                              children: [
+                                GalleryVideo(),
+                                SizedBox(width: 3,),
+                                GalleryVideo(),
+                                SizedBox(width: 3,),
+                                GalleryVideo(),
+                              ],
+                            )
                           ],
                         ),
-                        ),
-                        ),
-			                  //displays the Selfies, Posts, Memes & SVlogs the user has been tagged with, with corresponding count
-                        GestureDetector(onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) =>
-                              ProfileTags())
-                          );
-                        }, child: Container( child: Column(
+                      )),
+                  //tag gallery
+                  ContainerCard1(
+                      child: Container(
+                        child: Column(
                           children: [
                             Container(
-                              height: 160,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image: AssetImage('assets/selfie1.jpeg'), fit: BoxFit.cover)),
+                              padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Tags', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                          color: Colors.grey.shade600),),
+                                      SizedBox(height: 3,),
+                                      Text('100', style: kSimpleBasicText.copyWith(color: Colors.grey),),
+                                    ],
+                                  ),
+                                  GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context){
+                                        return ProfileTags();
+                                      }));
+                                    }, child: Text('View All', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold,
+                                      color: Colors.blueGrey)),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(height: 8,),
-                            Text('Tags(110)', style: kSimpleBasicText.copyWith(fontWeight: FontWeight.bold),)
+                            SizedBox(height: 10,),
+                            Row(
+                              children: [
+                                GallerySingle(),
+                                SizedBox(width: 3,),
+                                GalleryCollage(),
+                                SizedBox(width: 3,),
+                                GalleryVideo(),
+                              ],
+                            )
                           ],
                         ),
-                        ),
-                        ),
-                      ],
-                    ),
-                  ))
+                      )),
                 ],
               ),
             ),
@@ -398,6 +499,104 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
+
+//gallery items layout
+//layout of single image item uploaded content
+class GallerySingle extends StatelessWidget {
+  GallerySingle({
+    Key? key,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: 140,
+        decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/selfie1.jpeg'), fit: BoxFit.cover),
+            borderRadius: BorderRadius.all(Radius.circular(20))
+
+        ),
+      )
+    );
+  }
+}
+
+//layout of single uploaded video content
+class GalleryVideo extends StatelessWidget {
+  GalleryVideo({
+    Key? key,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(child: Container(
+        height: 140,
+        decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/selfie1.jpeg'), fit: BoxFit.cover),
+            borderRadius: BorderRadius.all(Radius.circular(20))
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              right: 5,
+              top: 5,
+              child: Container(
+                  padding: EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    color: Colors.black54,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      Icon(Icons.play_arrow, color: Colors.white, size: 18,),
+                    ],
+                  )
+              ),
+            )
+          ],
+        )
+    ));
+  }
+}
+
+//layout of multiple image/video in a single uploaded content
+class GalleryCollage extends StatelessWidget {
+  GalleryCollage({
+    Key? key,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+          height: 140,
+          decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage('assets/selfie1.jpeg'), fit: BoxFit.cover),
+              borderRadius: BorderRadius.all(Radius.circular(20))
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                right: 5,
+                top: 5,
+                child: Container(
+                    padding: EdgeInsets.all(3),
+                    decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      children: [
+                        Icon(Icons.collections, color: Colors.white, size: 18,),
+                      ],
+                    )
+                ),
+              )
+            ],
+          )
+      )
+    );
+  }
+}
+
 //not used currently
 class ProfileButton extends StatelessWidget {
   ProfileButton({
@@ -470,8 +669,35 @@ class ContainerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top: 20),
       width: double.infinity,
       padding: EdgeInsets.all(10),
+      child: child,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+                offset: Offset(2, 2),
+                blurRadius: 10,
+                spreadRadius: 4,
+                color: Colors.grey.withOpacity(0.3))
+          ]),
+    );
+  }
+}
+
+class ContainerCard1 extends StatelessWidget {
+  const ContainerCard1({Key? key, required this.child}) : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
       child: child,
       decoration: BoxDecoration(
           color: Colors.white,
