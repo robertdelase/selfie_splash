@@ -50,7 +50,7 @@ class _RetrievePasswordPageState extends State<RetrievePasswordPage> {
                       InputText(text: "EMAIL",),
                       SizedBox(height: 20,),
                       //sends token to user's email to reset password
-                      IntroButtonsTwo(text: 'RETRIEVE PASSWORD', ),
+                      IntroButtonsTwo(text: 'Retrieve Password', ),
                       SizedBox(height: 20,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
