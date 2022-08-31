@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                         //for inputting password
                         InputText(text: "PASSWORD",  change: (value) => password = value),
                         //for authenticating login details and taking user to Home Page
-                        IntroButtons(text: 'LOGIN',
+                        IntroButtons(text: 'Login',
                           pressed: () async{
                           await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
                            //await context.read<AuthService>().SignIn(email, password);
