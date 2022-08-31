@@ -100,7 +100,7 @@ class _SignUpState extends State<SignUp> {
                       InputText(text: "CONFIRM PASSWORD", change: (value) => c_password = value),
                       //for authenticating details and taking user to Home Page, with Profile Page generated as well
                       IntroButtons(
-                          text: 'SIGN UP',
+                          text: 'Sign Up',
                           pressed: (){
                             print(email);
                             FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((user) => {
